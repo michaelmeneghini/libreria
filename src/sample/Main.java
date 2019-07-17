@@ -6,6 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class Main extends Application {
 
     @Override
@@ -14,6 +18,13 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+
+        Connection db = DBConnector.getConnection();
+        Statement st = db.createStatement();
+        ResultSet rs = st.executeQuery("Select * from libro");
+        while(rs.next()){
+            System.out.println(rs.getStatement().toString());
+        }
     }
 
 

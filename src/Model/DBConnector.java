@@ -1,4 +1,4 @@
-package sample;
+package Model;
 import java.sql.*;
 
 public class DBConnector {

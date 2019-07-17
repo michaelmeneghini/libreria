@@ -23,9 +23,7 @@ public class Main extends Application {
         Connection db = DBConnector.getConnection();
         Statement st = db.createStatement();
         ResultSet rs = st.executeQuery("Select * from libro");
-        while(rs.next()){
-            System.out.println(rs.getStatement().toString());
-        }
+
     }
 
 

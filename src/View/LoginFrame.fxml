@@ -11,19 +11,19 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <TextField layoutX="132.0" layoutY="165.0" />
+            <TextField fx:id="login_email" layoutX="132.0" layoutY="165.0" />
             <Label layoutX="239.0" layoutY="41.0" text="Benvenuto nella libreria!" />
             <Label layoutX="66.0" layoutY="170.0" text="Email:" />
             <Label layoutX="41.0" layoutY="215.0" text="Password:" />
-            <PasswordField layoutX="132.0" layoutY="210.0" />
-            <Button layoutX="132.0" layoutY="250.0" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="26.0" prefWidth="80.0" text="Login" />
-            <Button layoutX="223.0" layoutY="250.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Registra" />
+            <PasswordField fx:id="login_password" layoutX="132.0" layoutY="210.0" />
+            <Button layoutX="132.0" layoutY="250.0" mnemonicParsing="false" onAction="#loginButtonClick" prefHeight="26.0" prefWidth="80.0" text="Login" />
+            <Button layoutX="223.0" layoutY="250.0" mnemonicParsing="false" onAction="#registerButtonClick" prefHeight="26.0" prefWidth="80.0" text="Registra" />
             <Label layoutX="443.0" layoutY="125.0" text="Utente non registrato" />
-            <TextField layoutX="428.0" layoutY="165.0" />
-            <TextField layoutX="428.0" layoutY="210.0" />
+            <TextField fx:id="accedi_nome" layoutX="428.0" layoutY="165.0" />
+            <TextField fx:id="accedi_cognome" layoutX="428.0" layoutY="210.0" />
             <Label layoutX="366.0" layoutY="170.0" text="Nome:" />
             <Label layoutX="342.0" layoutY="215.0" text="Cognome:" />
-            <Button layoutX="483.0" layoutY="250.0" mnemonicParsing="false" text="Accedi" />
+            <Button layoutX="483.0" layoutY="250.0" mnemonicParsing="false" onAction="#accediButtonClick" text="Accedi" />
       </children>
     </AnchorPane>
   </children>

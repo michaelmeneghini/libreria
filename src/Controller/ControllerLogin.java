@@ -6,12 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
+
+import java.util.regex.Pattern;
 
 
 public class ControllerLogin {
@@ -45,9 +47,26 @@ public class ControllerLogin {
         @FXML
         public void loginButtonClick(ActionEvent event) throws IOException {
 
-            String emailRecieved= login_email.getText();
+            String emailRecieved=login_email.getText();
+            
+            if (!isValidEmail(emailRecieved)) {
+
+                Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+                errorAlert.setHeaderText("Email inserita non valida!\nReinserire email");
+                errorAlert.showAndWait();
+
+            }
+
+
             String passwordRecieved= login_password.getText();
-            System.out.println("Email:"+ emailRecieved+"\n"+"password:"+ passwordRecieved +"\n");
+
+            if(!isValidPassword(emailRecieved,passwordRecieved)){
+                Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+                errorAlert.setHeaderText("Password o Email sbagliate!\nReinserire i dati!");
+                errorAlert.showAndWait();
+            }
+
+
         }
 
         @FXML
@@ -56,7 +75,27 @@ public class ControllerLogin {
             String nameRecieved =accedi_nome.getText();
             String surnameRecieved=accedi_cognome.getText();
 
-            System.out.println("Nome:"+ nameRecieved+"\n"+"Cognome:"+ surnameRecieved +"\n");
-
+            //TODO: Implementare apertura della schermata principale
         }
+
+        private boolean isValidEmail(String email) {
+
+            String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                                   "[a-zA-Z0-9_+&*-]+)*@" +
+                              "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";
+
+            Pattern pat = Pattern.compile(emailRegex);
+
+            if (email == null)
+                return false;
+
+            return pat.matcher(email).matches();
+        }
+
+        //TODO:Implementare metodo per capire se l'utente ha digitato la password giusta
+         private boolean isValidPassword(String email,String password){
+
+            return false;
+        }
+
 }

@@ -35,14 +35,15 @@ public class ControllerLogin {
         @FXML
         public void registerButtonClick(ActionEvent event) throws IOException {
 
-            Stage oldstage = (Stage)((Node) event.getSource()).getScene().getWindow();
-            oldstage.close();
-
             Parent root = FXMLLoader.load(getClass().getResource("../View/RegisterFrame.fxml"));
             Stage stage=new Stage();
             stage.setTitle("Register");
             stage.setScene(new Scene(root));
             stage.show();
+
+
+            Stage oldstage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            oldstage.close();
 
         }
 

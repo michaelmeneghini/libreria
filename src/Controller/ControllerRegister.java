@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.util.regex.Pattern;
+
 public class ControllerRegister {
 
     @FXML
@@ -44,9 +46,11 @@ public class ControllerRegister {
         String city=register_city.getText();
         String cap=register_cap.getText();
         String phone_number=register_phone_number.getText();
-        String email=register_email.getText();
 
-        //controllo che le due password coincidano
+        String email=null;
+        if(isValidEmail(register_email.getText()))
+            email=register_email.getText();
+
         String password=null;
         if(register_password.getText().matches(register_confirm_password.getText()))
             password=register_password.getText();
@@ -54,7 +58,21 @@ public class ControllerRegister {
         //TODO:Mettere i dati nel database
 
 
-        //TODO:aprire la schermata di login
+        //TODO:aprire la schermata principale
+    }
+
+    private boolean isValidEmail(String email) {
+
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+
+        if (email == null)
+            return false;
+
+        return pat.matcher(email).matches();
     }
 
 

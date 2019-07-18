@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import java.sql.*;
 import java.util.regex.Pattern;
 
+import static java.lang.Integer.*;
+import static java.lang.Integer.parseInt;
+
 public class ControllerRegister  {
 
     @FXML
@@ -42,12 +45,12 @@ public class ControllerRegister  {
     public void registerUser(ActionEvent event) throws SQLException{
 
         //prendo le stringhe dei dati
-        String name=register_name.getText();
-        String surname=register_surname.getText();
-        String address=register_address.getText();
-        String city=register_city.getText();
-        int cap=Integer.parseInt(register_cap.getText());
-        int phoneNumber=Integer.parseInt(register_phone_number.getText());
+        String name = register_name.getText();
+        String surname = register_surname.getText();
+        String address = register_address.getText();
+        String city = register_city.getText();
+        int cap = parseInt(register_cap.getText());
+        String phoneNumber = register_phone_number.getText();
 
         String email=null;
         if(isValidEmail(register_email.getText()))
@@ -57,19 +60,21 @@ public class ControllerRegister  {
         if(register_password.getText().matches(register_confirm_password.getText()))
             password=register_password.getText();
 
-        //Da provare non riesco ad andare più avanti della registrazione !!!!!!!!!!!!!
-        /*
+
         Connection db = DBConnector.getConnection();
         Statement st = db.createStatement();
         ResultSet rs1 = null;
-        ResultSet rs = st.executeQuery("INSERT INTO public.libro_card (data_emissione, punti) VALUES(CURRENT_DATE, 0);");
-        if(rs.next()){
+        int libroCardId = 0;
+        int rs = st.executeUpdate("INSERT INTO libro_card (punti) VALUES(0);");
+        if(rs != 0){
             rs1 = st.executeQuery("SELECT id FROM libro_card ORDER BY id DESC LIMIT 1 ;");
+            while (rs1.next()){
+                libroCardId = rs1.getInt(1);
+            }
         }
         else
             System.out.println("Nada");
 
-        int libroCardId = rs1.getInt(1);
 
         PreparedStatement ps = db.prepareStatement("INSERT INTO public.utente (email, nome, cognome, indirizzo, cap, telefono, \"password\", libro_card, responsabile, città) VALUES(?, ?, ?, ?, ?, ?, ?, ?, false, ?);");
         ps.setString(1,email);
@@ -79,20 +84,17 @@ public class ControllerRegister  {
         ps.setString(7,password);
         ps.setString(9,city);
         ps.setInt(5,cap);
-        ps.setInt(6,phoneNumber);
+        ps.setString(6,phoneNumber);
         ps.setInt(8,libroCardId);
 
-        rs = st.executeQuery(ps.toString());
+        rs = st.executeUpdate(ps.toString());
 
-        if(rs.next()){
+        if(rs != 0){
             System.out.println("Utente registrato correttamente");
         }
         else{
             System.out.println("Nada");
         }
-
-
-         */
 
         //TODO:aprire la schermata principale
     }

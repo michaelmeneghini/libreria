@@ -67,12 +67,6 @@ public class ControllerLogin {
                 errorAlert.setHeaderText("Password o Email sbagliate!\nReinserire i dati!");
                 errorAlert.showAndWait();
             }
-            else{
-                //Email e password corrette, Email case Insensitive, Password Case Sensitive
-                Alert errorAlert1 = new Alert(Alert.AlertType.CONFIRMATION);
-                errorAlert1.setHeaderText("Corretto Man");
-                errorAlert1.showAndWait();
-            }
         }
 
         @FXML
@@ -100,7 +94,6 @@ public class ControllerLogin {
 
         //Metodo controllo validità coppia email-password
          private boolean isValidPassword(String email,String password) throws SQLException {
-
              Connection db = DBConnector.getConnection();
              Statement st = db.createStatement();
              PreparedStatement ps = db.prepareStatement("SELECT * FROM utente WHERE email ILIKE ? AND password LIKE ?");
@@ -110,8 +103,8 @@ public class ControllerLogin {
 
              if(rs.next())
                  return true;
-
-            return false;
+             else
+                 return false;
         }
 
 }

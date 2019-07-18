@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.DBConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import java.sql.*;
 import java.util.regex.Pattern;
 
 
@@ -45,7 +47,7 @@ public class ControllerLogin {
         }
 
         @FXML
-        public void loginButtonClick(ActionEvent event) throws IOException {
+        public void loginButtonClick(ActionEvent event) throws IOException, SQLException {
 
             String emailRecieved=login_email.getText();
             
@@ -54,7 +56,6 @@ public class ControllerLogin {
                 Alert errorAlert = new Alert(Alert.AlertType.WARNING);
                 errorAlert.setHeaderText("Email inserita non valida!\nReinserire email");
                 errorAlert.showAndWait();
-
             }
 
 
@@ -65,8 +66,12 @@ public class ControllerLogin {
                 errorAlert.setHeaderText("Password o Email sbagliate!\nReinserire i dati!");
                 errorAlert.showAndWait();
             }
-
-
+            else{
+                //Email e password corrette, Email case Insensitive, Password Case Sensitive
+                Alert errorAlert1 = new Alert(Alert.AlertType.CONFIRMATION);
+                errorAlert1.setHeaderText("Corretto Man");
+                errorAlert1.showAndWait();
+            }
         }
 
         @FXML
@@ -92,8 +97,18 @@ public class ControllerLogin {
             return pat.matcher(email).matches();
         }
 
-        //TODO:Implementare metodo per capire se l'utente ha digitato la password giusta
-         private boolean isValidPassword(String email,String password){
+        //Metodo controllo validità coppia email-password
+         private boolean isValidPassword(String email,String password) throws SQLException {
+
+             Connection db = DBConnector.getConnection();
+             Statement st = db.createStatement();
+             PreparedStatement ps = db.prepareStatement("SELECT * FROM utente WHERE email ILIKE ? AND password LIKE ?");
+             ps.setString(1,email);
+             ps.setString(2,password);
+             ResultSet rs = st.executeQuery(ps.toString());
+
+             if(rs.next())
+                 return true;
 
             return false;
         }

@@ -51,15 +51,6 @@ public class ControllerLogin {
         public void loginButtonClick(ActionEvent event) throws IOException, SQLException {
 
             String emailRecieved=login_email.getText();
-            
-            if (!isValidEmail(emailRecieved)) {
-
-                Alert errorAlert = new Alert(Alert.AlertType.WARNING);
-                errorAlert.setHeaderText("Email inserita non valida!\nReinserire email");
-                errorAlert.showAndWait();
-            }
-
-
             String passwordRecieved= login_password.getText();
 
             if(!isValidPassword(emailRecieved,passwordRecieved)){

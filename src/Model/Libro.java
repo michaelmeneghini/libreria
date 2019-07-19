@@ -1,15 +1,15 @@
 package Model;
 
 public class Libro {
-    int ISBN;
+    String ISBN;
     String titolo;
     String autore;
-    int prezzo;
+    float prezzo;
     String descrizione;
     int copie_vendute;
     int punti;
 
-    public Libro(int ISBN, String titolo, String autore, int prezzo, String descrizione, int punti) {
+    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int punti) {
         this.ISBN = ISBN;
         this.titolo = titolo;
         this.autore = autore;
@@ -19,7 +19,7 @@ public class Libro {
         this.punti = punti;
     }
 
-    public Libro(int ISBN, String titolo, String autore, int prezzo, String descrizione, int copie_vendute, int punti) {
+    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int copie_vendute, int punti) {
         this.ISBN = ISBN;
         this.titolo = titolo;
         this.autore = autore;
@@ -29,7 +29,7 @@ public class Libro {
         this.punti = punti;
     }
 
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
 
@@ -41,7 +41,7 @@ public class Libro {
         return autore;
     }
 
-    public int getPrezzo() {
+    public float getPrezzo() {
         return prezzo;
     }
 
@@ -57,7 +57,7 @@ public class Libro {
         return punti;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
@@ -69,7 +69,7 @@ public class Libro {
         this.autore = autore;
     }
 
-    public void setPrezzo(int prezzo) {
+    public void setPrezzo(float prezzo) {
         this.prezzo = prezzo;
     }
 

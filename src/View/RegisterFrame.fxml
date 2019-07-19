@@ -30,7 +30,7 @@
             <TextField fx:id="register_email" layoutX="236.0" layoutY="187.0" />
             <PasswordField fx:id="register_password" layoutX="236.0" layoutY="227.0" prefHeight="26.0" prefWidth="171.0" />
             <PasswordField fx:id="register_confirm_password" layoutX="236.0" layoutY="263.0" />
-            <Button layoutX="272.0" layoutY="302.0" mnemonicParsing="false" onAction="#registerUser" text="Registrati" />
+            <Button layoutX="272.0" layoutY="299.0" mnemonicParsing="false" onAction="#registerUser" text="Registrati" />
       </children>
     </AnchorPane>
   </children>

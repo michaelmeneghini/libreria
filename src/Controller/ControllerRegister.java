@@ -3,13 +3,17 @@ package Controller;
 import Model.DBConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.sql.*;
 import java.util.regex.Pattern;
 
-import static java.lang.Integer.*;
 import static java.lang.Integer.parseInt;
 
 public class ControllerRegister  {
@@ -42,9 +46,8 @@ public class ControllerRegister  {
     private PasswordField register_confirm_password;
 
     @FXML
-    public void registerUser(ActionEvent event) throws SQLException{
+    public void registerUser(ActionEvent event) throws SQLException, Exception{
 
-        //prendo le stringhe dei dati
         String name = register_name.getText();
         String surname = register_surname.getText();
         String address = register_address.getText();
@@ -96,7 +99,15 @@ public class ControllerRegister  {
             System.out.println("Nada");
         }
 
-        //TODO:aprire la schermata principale
+        Parent root = FXMLLoader.load(getClass().getResource("../View/LoginFrame.fxml"));
+        Stage stage=new Stage();
+        stage.setTitle("Login");
+        stage.setScene(new Scene(root));
+        stage.show();
+
+
+        Stage oldstage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        oldstage.close();
     }
 
     private boolean isValidEmail(String email) {

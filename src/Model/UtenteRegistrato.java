@@ -4,10 +4,10 @@ public class UtenteRegistrato extends Utente {
 
     String indirizzo;
     String città;
-    int cap;
+    String cap;
     int libro_card;
 
-    public UtenteRegistrato(String email, String nome, String cognome, int telefono, String password, String indirizzo, String città, int cap, int libro_card) {
+    public UtenteRegistrato(String email, String nome, String cognome, int telefono, String password, String indirizzo, String città, String cap, int libro_card) {
         super(email, nome, cognome, telefono, password);
         this.indirizzo = indirizzo;
         this.città = città;
@@ -23,7 +23,7 @@ public class UtenteRegistrato extends Utente {
         return città;
     }
 
-    public int getCap() {
+    public String getCap() {
         return cap;
     }
 
@@ -39,7 +39,7 @@ public class UtenteRegistrato extends Utente {
         this.città = città;
     }
 
-    public void setCap(int cap) {
+    public void setCap(String cap) {
         this.cap = cap;
     }
 

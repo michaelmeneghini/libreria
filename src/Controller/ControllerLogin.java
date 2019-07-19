@@ -58,6 +58,11 @@ public class ControllerLogin {
                 errorAlert.setHeaderText("Password o Email sbagliate!\nReinserire i dati!");
                 errorAlert.showAndWait();
             }
+            else{
+                Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                successAlert.setHeaderText("Esattamente");
+                successAlert.show();
+            }
         }
 
         @FXML

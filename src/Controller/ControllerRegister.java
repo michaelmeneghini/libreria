@@ -67,7 +67,10 @@ public class ControllerRegister  {
             if (isValidEmail(register_email.getText())) {
                 email = register_email.getText();
                 if (isEmailTaken(email)){
-                    //TODO: cambia la label
+                    Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+                    errorAlert.setHeaderText("Email già utilizzata!Inserirne un'altra.");
+                    errorAlert.showAndWait();
+                    return;
                 }
             } else {
                 Alert errorAlert = new Alert(Alert.AlertType.WARNING);

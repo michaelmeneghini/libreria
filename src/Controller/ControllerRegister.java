@@ -64,9 +64,12 @@ public class ControllerRegister  {
         else {
 
             String email = null;
-            if (isValidEmail(register_email.getText()))
+            if (isValidEmail(register_email.getText())) {
                 email = register_email.getText();
-            else {
+                if (isEmailTaken(email)){
+                    //TODO: cambia la label
+                }
+            } else {
                 Alert errorAlert = new Alert(Alert.AlertType.WARNING);
                 errorAlert.setHeaderText("Password o Email non inserite!\nInserire i dati!");
                 errorAlert.showAndWait();
@@ -143,7 +146,20 @@ public class ControllerRegister  {
         return pat.matcher(email).matches();
     }
 
+    private boolean isEmailTaken(String email) throws SQLException {
 
+        Connection db = DBConnector.getConnection();
+        Statement st = db.createStatement();
+        ResultSet rs = st.executeQuery("SELECT email FROM utente");
+        while(rs.next()){
+            if( email.equals(rs.getString(1))){
+                return true;
+            }
+        }
+        db.close();
+        return false;
+
+    }
 
 
 }

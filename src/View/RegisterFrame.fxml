@@ -1,36 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerRegister">
+<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerRegister">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Label layoutX="276.0" layoutY="14.0" text="Registrazione" />
-            <Label layoutX="66.0" layoutY="65.0" text="Nome:" />
-            <Label layoutX="320.0" layoutY="65.0" text="Cognome:" />
-            <Label layoutX="14.0" layoutY="107.0" text="Indirizzo:" />
-            <Label layoutX="504.0" layoutY="107.0" text="C.A.P. :" />
-            <Label layoutX="173.0" layoutY="155.0" text="Cellulare:" />
-            <Label layoutX="276.0" layoutY="107.0" text="Città:" />
-            <Label layoutX="194.0" layoutY="192.0" text="Email:" />
-            <Label layoutX="161.0" layoutY="232.0" text="Password:" />
-            <Label layoutX="113.0" layoutY="268.0" text="Confirm password:" />
-            <TextField fx:id="register_name" layoutX="118.0" layoutY="60.0" />
-            <TextField fx:id="register_surname" layoutX="398.0" layoutY="60.0" />
-            <TextField fx:id="register_address" layoutX="88.0" layoutY="102.0" />
-            <TextField fx:id="register_city" layoutX="321.0" layoutY="102.0" />
-            <TextField fx:id="register_cap" layoutX="559.0" layoutY="102.0" prefHeight="26.0" prefWidth="59.0" />
-            <TextField fx:id="register_phone_number" layoutX="235.0" layoutY="150.0" />
-            <TextField fx:id="register_email" layoutX="236.0" layoutY="187.0" />
-            <PasswordField fx:id="register_password" layoutX="236.0" layoutY="227.0" prefHeight="26.0" prefWidth="171.0" />
-            <PasswordField fx:id="register_confirm_password" layoutX="236.0" layoutY="263.0" />
-            <Button layoutX="272.0" layoutY="299.0" mnemonicParsing="false" onAction="#registerUser" text="Registrati" />
+            <Button layoutX="269.0" layoutY="321.0" mnemonicParsing="false" onAction="#registerUser" text="Registrati" />
+            <JFXTextField fx:id="register_name" layoutX="117.0" layoutY="30.0" promptText="Nome" />
+            <JFXTextField fx:id="register_surname" layoutX="334.0" layoutY="30.0" promptText="Cognome" />
+            <JFXTextField fx:id="register_address" layoutX="117.0" layoutY="74.0" promptText="Indirizzo" />
+            <JFXTextField fx:id="register_city" layoutX="334.0" layoutY="74.0" promptText="Città" />
+            <JFXTextField fx:id="register_cap" layoutX="117.0" layoutY="124.0" promptText="C.A.P" />
+            <JFXTextField fx:id="register_phone_number" layoutX="334.0" layoutY="124.0" promptText="Cellulare" />
+            <JFXTextField fx:id="register_email" layoutX="225.0" layoutY="181.0" promptText="Email" />
+            <JFXPasswordField fx:id="register_password" layoutX="225.0" layoutY="225.0" promptText="Password" />
+            <JFXPasswordField fx:id="register_confirm_password" layoutX="225.0" layoutY="264.0" promptText="Confirm password" />
       </children>
     </AnchorPane>
   </children>

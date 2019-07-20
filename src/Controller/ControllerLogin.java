@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -33,6 +34,9 @@ public class ControllerLogin {
         private TextField accedi_cognome;
 
         @FXML
+        private Label login_error;
+
+        @FXML
         public void registerButtonClick(ActionEvent event) throws IOException {
 
             Parent root = FXMLLoader.load(getClass().getResource("../View/RegisterFrame.fxml"));
@@ -50,19 +54,15 @@ public class ControllerLogin {
         @FXML
         public void loginButtonClick(ActionEvent event) throws IOException, SQLException {
 
+            login_error.setText("");
+
             String emailRecieved=login_email.getText();
             String passwordRecieved= login_password.getText();
 
             if(!isValidPassword(emailRecieved,passwordRecieved)){
-                Alert errorAlert = new Alert(Alert.AlertType.WARNING);
-                errorAlert.setHeaderText("Password o Email sbagliate!\nReinserire i dati!");
-                errorAlert.showAndWait();
+                login_error.setText("Email non valida!");
             }
-            else{
-                Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                successAlert.setHeaderText("Esattamente");
-                successAlert.show();
-            }
+
         }
 
         @FXML

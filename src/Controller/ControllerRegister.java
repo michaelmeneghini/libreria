@@ -121,15 +121,11 @@ public class ControllerRegister  {
                     System.out.println("Nada");
                 }
 
-                Parent root = FXMLLoader.load(getClass().getResource("../View/LoginFrame.fxml"));
-                Stage stage = new Stage();
-                stage.setTitle("Login");
-                stage.setScene(new Scene(root));
-                stage.show();
-
-
-                Stage oldstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                oldstage.close();
+                Parent registerFrameParent=FXMLLoader.load(getClass().getResource("../View/LoginFrame.fxml"));
+                Scene registerFrame=new Scene(registerFrameParent);
+                Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
+                window.setScene(registerFrame);
+                window.show();
             }
 
         }

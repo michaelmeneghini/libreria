@@ -7,12 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 import java.sql.*;
@@ -39,15 +39,11 @@ public class ControllerLogin {
         @FXML
         public void registerButtonClick(ActionEvent event) throws IOException {
 
-            Parent root = FXMLLoader.load(getClass().getResource("../View/RegisterFrame.fxml"));
-            Stage stage=new Stage();
-            stage.setTitle("Register");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-
-            Stage oldstage = (Stage)((Node) event.getSource()).getScene().getWindow();
-            oldstage.close();
+            Parent registerFrameParent=FXMLLoader.load(getClass().getResource("../View/RegisterFrame.fxml"));
+            Scene registerFrame=new Scene(registerFrameParent);
+            Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
+            window.setScene(registerFrame);
+            window.show();
 
         }
 

@@ -12,8 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
 
 import java.sql.*;
@@ -60,17 +58,17 @@ public class ControllerLogin {
                 login_error.setText("Email non valida!");
             }
 
+            Parent registerFrameParent = null;
             //se è un responsabile apro la pagina da responsabile altrimenti apro la pagina da utente comune
             if( checkResponsabile(emailReceived) ){
-                Parent registerFrameParent=FXMLLoader.load(getClass().getResource("../View/Responsabile.fxml"));
-                Scene registerFrame=new Scene(registerFrameParent);
-                Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
-                window.setScene(registerFrame);
-                window.show();
+                registerFrameParent=FXMLLoader.load(getClass().getResource("../View/Responsabile.fxml"));
             } else {
-                //TODO: pagina principale
-                System.out.println("Non è un responsabile.");
+                registerFrameParent=FXMLLoader.load(getClass().getResource("../View/UtenteRegistrato.fxml"));
             }
+            Scene registerFrame=new Scene(registerFrameParent);
+            Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
+            window.setScene(registerFrame);
+            window.show();
 
         }
 

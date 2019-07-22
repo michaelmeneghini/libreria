@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
@@ -22,6 +23,8 @@
             <JFXPasswordField fx:id="register_password" layoutX="190.0" layoutY="320.0" promptText="Password" />
             <JFXPasswordField fx:id="register_confirm_password" layoutX="190.0" layoutY="359.0" promptText="Confirm password" />
             <FontAwesomeIconView glyphName="USER" layoutX="254.0" layoutY="98.0" size="70" wrappingWidth="62.428571701049805" />
+            <JFXButton fx:id="login_backButton" layoutX="435.0" layoutY="449.0" onAction="#backButtonClicked" prefHeight="34.0" prefWidth="90.0" text="Indietro" />
+            <FontAwesomeIconView glyphName="UNDO" layoutX="533.0" layoutY="476.0" size="30" />
       </children>
     </AnchorPane>
   </children>

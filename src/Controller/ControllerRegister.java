@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.regex.Pattern;
 
@@ -160,6 +161,16 @@ public class ControllerRegister  {
         db.close();
         return false;
 
+    }
+
+    @FXML
+    public void  backButtonClicked(ActionEvent event) throws IOException {
+
+        Parent registerFrameParent=FXMLLoader.load(getClass().getResource("../View/LoginFrame.fxml"));
+        Scene registerFrame=new Scene(registerFrameParent);
+        Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
+        window.setScene(registerFrame);
+        window.show();
     }
 
 

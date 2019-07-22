@@ -2,10 +2,14 @@ package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-public class ControllerProfilo {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ControllerProfilo implements Initializable {
 
     @FXML
     private AnchorPane anchor_pane;
@@ -31,9 +35,15 @@ public class ControllerProfilo {
     @FXML
     private Label lable_libroCard;
 
+    private String email = ControllerLogin.getEmailLoggedas();
+
     @FXML
     public void modificaDatiButtonClicked(ActionEvent event){
 
+
+    }
+
+    public void initialize(URL location, ResourceBundle resources){
 
     }
 

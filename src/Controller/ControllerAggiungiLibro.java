@@ -104,6 +104,14 @@ public class ControllerAggiungiLibro implements Initializable {
 
         loadData();
 
+        isbnField.setText("");
+        titoloField.setText("");
+        autoreField.setText("");
+        prezzoField.setText("");
+        descrizioneField.setText("");
+        copieVenduteField.setText("");
+        puntiField.setText("");
+
     }
 
     @Override

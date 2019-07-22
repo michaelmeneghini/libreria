@@ -91,7 +91,14 @@ public class ControllerLogin{
             String nameRecieved =accedi_nome.getText();
             String surnameRecieved=accedi_cognome.getText();
 
-            //TODO: Implementare apertura della schermata principale
+            //apertura della schermata principale utente non registrato
+            Parent registerFrameParent = FXMLLoader.load(getClass().getResource("../View/UtenteNonRegistrato.fxml"));
+            Scene registerFrame = new Scene(registerFrameParent);
+            Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+            window.setScene(registerFrame);
+            window.setMaximized(true);
+            window.show();
+
         }
 
         private boolean isValidEmail(String email) {

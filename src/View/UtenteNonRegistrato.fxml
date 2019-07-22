@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerUtenteNonRegistrato">
+    <children>
+        <AnchorPane prefHeight="600.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="classifiche" layoutX="33.0" layoutY="239.0" mnemonicParsing="false" onAction="#dynamicPageUpdater" prefHeight="51.0" prefWidth="134.0" text="Classifiche" />
+                <Button fx:id="libri" layoutX="33.0" layoutY="75.0" mnemonicParsing="false" onAction="#dynamicPageUpdater" prefHeight="51.0" prefWidth="134.0" text="Libri" />
+                <Button fx:id="carrello" layoutX="33.0" layoutY="158.0" mnemonicParsing="false" onAction="#dynamicPageUpdater" prefHeight="51.0" prefWidth="134.0" text="Carrello" />
+                <Button fx:id="ordini" layoutX="33.0" layoutY="320.0" mnemonicParsing="false" onAction="#dynamicPageUpdater" prefHeight="51.0" prefWidth="134.0" text="Ordini" />
+                <Button fx:id="log_out" layoutX="33.0" layoutY="550.0" mnemonicParsing="false" onAction="#logout" prefHeight="51.0" prefWidth="134.0" text="Log Out" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="anchor_pane" prefHeight="600.0" prefWidth="1277.0">
+            <children>
+                <FontAwesomeIconView glyphName="CHILD" layoutX="610.0" layoutY="411.0" size="80" />
+                <Label layoutX="595.0" layoutY="326.0" text="BENVENUTO!" textFill="#b2b2b2" />
+            </children></AnchorPane>
+    </children>
+</HBox>

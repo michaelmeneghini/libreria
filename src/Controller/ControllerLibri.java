@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.DBConnector;
+import Model.Libro;
 import Model.LibroTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +29,9 @@ public class ControllerLibri implements Initializable {
     private TableView<LibroTable> table_libri;
 
     @FXML
+    private TableColumn<LibroTable, String> col_ISBN;
+
+    @FXML
     private TableColumn<LibroTable, String> col_titolo;
 
     @FXML
@@ -45,6 +49,10 @@ public class ControllerLibri implements Initializable {
     @FXML
     private TableColumn<LibroTable, Button> col_button;
 
+    public static ObservableList<LibroTable> libri;
+
+    public static ObservableList<Libro> cart;
+
     public void initialize(URL location, ResourceBundle resources) {
         initTable();
         loadData();
@@ -56,6 +64,7 @@ public class ControllerLibri implements Initializable {
 
     private void initCols(){
 
+        col_ISBN.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
         col_titolo.setCellValueFactory(new PropertyValueFactory<>("Titolo"));
         col_autore.setCellValueFactory(new PropertyValueFactory<>("Autore"));
         col_prezzo.setCellValueFactory(new PropertyValueFactory<>("Prezzo"));
@@ -67,6 +76,13 @@ public class ControllerLibri implements Initializable {
     }
 
     private void editableCols(){
+
+        col_ISBN.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        col_ISBN.setOnEditCommit(e->{
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setISBN(e.getNewValue());
+        });
+
         col_titolo.setCellFactory(TextFieldTableCell.forTableColumn());
 
         col_titolo.setOnEditCommit(e->{
@@ -101,14 +117,16 @@ public class ControllerLibri implements Initializable {
     }
 
     private void loadData(){
-        ObservableList<LibroTable> libri = FXCollections.observableArrayList();
+        libri = FXCollections.observableArrayList();
+        cart = FXCollections.observableArrayList();
+
 
         Connection db = DBConnector.getConnection();
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("Select titolo,autore,prezzo,descrizione,punti from libro;");
+            ResultSet rs = st.executeQuery("Select * FROM libro;");
             while (rs.next()) {
-                libri.add(new LibroTable(rs.getString(1), rs.getString(2), String.valueOf(rs.getFloat(3)), rs.getString(4), String.valueOf(rs.getString(5)), new Button("AddToCart")));
+                libri.add(new LibroTable(rs.getString(2), rs.getString(3), String.valueOf(rs.getFloat(4)), rs.getString(5), String.valueOf(rs.getString(6)), new Button("AddToCart"),rs.getString(1)));
             }
             db.close();
             st.close();

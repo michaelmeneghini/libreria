@@ -56,6 +56,9 @@ public class ControllerResponsabile {
         Parent registerFrameParent=FXMLLoader.load(getClass().getResource("../View/LoginFrame.fxml"));
         Scene registerFrame=new Scene(registerFrameParent);
         Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
+        window.setHeight(400);
+        window.setWidth(640);
+        window.setMaximized(false);
         window.setScene(registerFrame);
         window.show();
 

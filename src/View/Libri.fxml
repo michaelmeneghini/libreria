@@ -8,6 +8,7 @@
    <children>
       <TableView fx:id="table_libri" layoutX="4.0" layoutY="4.0" prefHeight="650.0" prefWidth="1190.0">
         <columns>
+            <TableColumn fx:id="col_ISBN" prefWidth="0" text = ""/>
           <TableColumn fx:id="col_titolo" prefWidth="218.0" text="Titolo" />
           <TableColumn fx:id="col_autore" prefWidth="216.0" text="Autore" />
             <TableColumn fx:id="col_desc" prefWidth="95.0" text="Prezzo" />

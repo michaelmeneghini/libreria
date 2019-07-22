@@ -5,26 +5,26 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerProfilo">
+<AnchorPane fx:id="anchor_pane" prefHeight="600.0" prefWidth="800.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerProfilo">
    <children>
-      <JFXButton layoutX="277.0" layoutY="330.0" onAction="#modificaDatiButtonClicked" text="MODIFICA DATI" />
-      <FontAwesomeIconView glyphName="USERS" layoutX="324.0" layoutY="64.0" size="50" />
-      <Label layoutX="323.0" layoutY="79.0" text="PROFILO" textFill="#b2b2b2" />
-      <Label layoutX="401.0" layoutY="152.0" text="Cognome:" textFill="#b2b2b2" />
-      <Label layoutX="129.0" layoutY="152.0" text="Nome:" textFill="#b2b2b2" />
-      <Label layoutX="112.0" layoutY="185.0" text="Indirizzo:" textFill="#b2b2b2" />
-      <Label layoutX="433.0" layoutY="185.0" text="Città:" textFill="#b2b2b2" />
-      <Label layoutX="130.0" layoutY="254.0" text="Email:" textFill="#b2b2b2" />
-      <Label layoutX="363.0" layoutY="254.0" prefHeight="16.0" prefWidth="112.0" text="Saldo LibroCard:" textFill="#b2b2b2" />
-      <Label layoutX="131.0" layoutY="220.0" text="C.A.P:" textFill="#b2b2b2" />
-      <Label layoutX="406.0" layoutY="220.0" text="Cellulare:" textFill="#b2b2b2" />
-      <Label fx:id="label_nome" layoutX="205.0" layoutY="152.0" textFill="#ffff8d" />
-      <Label fx:id="label_indirizzo" layoutX="205.0" layoutY="185.0" textFill="#ffff8d" />
-      <Label fx:id="label_cap" layoutX="205.0" layoutY="221.0" textFill="#ffff8d" />
-      <Label fx:id="label_email" layoutX="205.0" layoutY="255.0" textFill="#ffff8d" />
-      <Label fx:id="label_cognome" layoutX="501.0" layoutY="152.0" textFill="#ffff8d" />
-      <Label fx:id="label_città" layoutX="501.0" layoutY="185.0" textFill="#ffff8d" />
-      <Label fx:id="label_cellulare" layoutX="501.0" layoutY="220.0" textFill="#ffff8d" />
-      <Label fx:id="label_libroCard" layoutX="501.0" layoutY="254.0" textFill="#ffff8d" />
+      <JFXButton layoutX="353.0" layoutY="384.0" onAction="#modificaDatiButtonClicked" text="MODIFICA DATI" />
+      <FontAwesomeIconView glyphName="USERS" layoutX="400.0" layoutY="115.0" size="50" />
+      <Label layoutX="400.0" layoutY="130.0" text="PROFILO" textFill="#b2b2b2" />
+      <Label layoutX="471.0" layoutY="192.0" text="Cognome:" textFill="#b2b2b2" />
+      <Label layoutX="151.0" layoutY="192.0" text="Nome:" textFill="#b2b2b2" />
+      <Label layoutX="134.0" layoutY="225.0" text="Indirizzo:" textFill="#b2b2b2" />
+      <Label layoutX="503.0" layoutY="225.0" text="Città:" textFill="#b2b2b2" />
+      <Label layoutX="152.0" layoutY="294.0" text="Email:" textFill="#b2b2b2" />
+      <Label layoutX="433.0" layoutY="294.0" prefHeight="16.0" prefWidth="112.0" text="Saldo LibroCard:" textFill="#b2b2b2" />
+      <Label layoutX="153.0" layoutY="260.0" text="C.A.P:" textFill="#b2b2b2" />
+      <Label layoutX="476.0" layoutY="260.0" text="Cellulare:" textFill="#b2b2b2" />
+      <Label fx:id="label_nome" layoutX="227.0" layoutY="192.0" textFill="#ffff8d" />
+      <Label fx:id="label_indirizzo" layoutX="227.0" layoutY="225.0" textFill="#ffff8d" />
+      <Label fx:id="label_cap" layoutX="227.0" layoutY="261.0" textFill="#ffff8d" />
+      <Label fx:id="label_email" layoutX="227.0" layoutY="295.0" textFill="#ffff8d" />
+      <Label fx:id="label_cognome" layoutX="571.0" layoutY="192.0" textFill="#ffff8d" />
+      <Label fx:id="label_città" layoutX="571.0" layoutY="225.0" textFill="#ffff8d" />
+      <Label fx:id="label_cellulare" layoutX="571.0" layoutY="260.0" textFill="#ffff8d" />
+      <Label fx:id="label_libroCard" layoutX="571.0" layoutY="294.0" textFill="#ffff8d" />
    </children>
 </AnchorPane>

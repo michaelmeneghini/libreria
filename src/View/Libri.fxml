@@ -4,16 +4,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerLibri">
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerLibri">
    <children>
-      <TableView fx:id="table_libri" layoutX="4.0" layoutY="4.0" prefHeight="591.0" prefWidth="690.0">
+      <TableView fx:id="table_libri" layoutX="4.0" layoutY="4.0" prefHeight="591.0" prefWidth="1190.0">
         <columns>
-          <TableColumn fx:id="col_titolo" prefWidth="124.0" text="Titolo" />
-          <TableColumn fx:id="col_autore" prefWidth="89.0" text="Autore" />
-            <TableColumn fx:id="col_desc" prefWidth="85.0" text="Prezzo" />
-            <TableColumn fx:id="col_prezzo" prefWidth="254.0" text="Descrizione" />
-            <TableColumn fx:id="col_punti" prefWidth="65.0" text="Punti" />
-            <TableColumn fx:id="col_button" prefWidth="72.0" />
+          <TableColumn fx:id="col_titolo" prefWidth="218.0" text="Titolo" />
+          <TableColumn fx:id="col_autore" prefWidth="216.0" text="Autore" />
+            <TableColumn fx:id="col_desc" prefWidth="95.0" text="Prezzo" />
+            <TableColumn fx:id="col_prezzo" prefWidth="447.0" text="Descrizione" />
+            <TableColumn fx:id="col_punti" prefWidth="78.0" text="Punti" />
+            <TableColumn fx:id="col_button" prefWidth="135.0" />
         </columns>
       </TableView>
    </children>

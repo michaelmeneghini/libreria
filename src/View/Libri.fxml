@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerLibri">
    <children>
-      <Label fx:id="anchor_pane" layoutX="201.0" layoutY="212.0" text="libri" />
+      <TableView fx:id="table_libri" layoutX="4.0" layoutY="4.0" prefHeight="591.0" prefWidth="690.0">
+        <columns>
+          <TableColumn fx:id="col_titolo" prefWidth="124.0" text="Titolo" />
+          <TableColumn fx:id="col_autore" prefWidth="89.0" text="Autore" />
+            <TableColumn fx:id="col_prezzo" prefWidth="85.0" text="Prezzo" />
+            <TableColumn fx:id="col_desc" prefWidth="254.0" text="Descrizione" />
+            <TableColumn fx:id="col_punti" prefWidth="65.0" text="Punti" />
+            <TableColumn fx:id="col_button" prefWidth="72.0" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

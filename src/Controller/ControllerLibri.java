@@ -51,7 +51,7 @@ public class ControllerLibri implements Initializable {
 
     public static ObservableList<LibroTable> libri;
 
-    public static ObservableList<Libro> cart;
+    public static ObservableList<LibroTable> cart;
 
     public void initialize(URL location, ResourceBundle resources) {
         initTable();
@@ -113,7 +113,6 @@ public class ControllerLibri implements Initializable {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setPunti(e.getNewValue());
         });
 
-        //table_libri.setEditable(true);
     }
 
     private void loadData(){
@@ -135,3 +134,4 @@ public class ControllerLibri implements Initializable {
         table_libri.setItems(libri);
     }
 }
+

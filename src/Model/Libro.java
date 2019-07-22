@@ -6,8 +6,8 @@ public class Libro {
     String autore;
     float prezzo;
     String descrizione;
-    int copie_vendute;
     int punti;
+    int copie_vendute;
 
     public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int punti) {
         this.ISBN = ISBN;
@@ -15,19 +15,20 @@ public class Libro {
         this.autore = autore;
         this.prezzo = prezzo;
         this.descrizione = descrizione;
-        this.copie_vendute = 0;
         this.punti = punti;
+        this.copie_vendute = 0;
     }
 
-    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int copie_vendute, int punti) {
+    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int punti,int copie_vendute) {
         this.ISBN = ISBN;
         this.titolo = titolo;
         this.autore = autore;
         this.prezzo = prezzo;
         this.descrizione = descrizione;
-        this.copie_vendute = copie_vendute;
         this.punti = punti;
+        this.copie_vendute = copie_vendute;
     }
+
 
     public String getISBN() {
         return ISBN;
@@ -84,6 +85,7 @@ public class Libro {
     public void setPunti(int punti) {
         this.punti = punti;
     }
+
 
     @Override
     public String toString() {

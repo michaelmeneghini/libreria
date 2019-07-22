@@ -7,6 +7,7 @@ public class LibroTable {
     private String titolo,autore,descrizione,prezzo,punti,ISBN;
 
     private Button addCart;
+    private Button delete;
 
     public LibroTable(String titolo, String autore, String descrizione, String prezzo, String punti, Button addCart, String ISBN) {
         this.titolo = titolo;
@@ -20,6 +21,17 @@ public class LibroTable {
         addLibroCartOnEvent();
     }
 
+    public LibroTable(String titolo, String autore, String descrizione, String prezzo, String punti, String ISBN, Button delete) {
+        this.titolo = titolo;
+        this.autore = autore;
+        this.descrizione = descrizione;
+        this.prezzo = prezzo;
+        this.punti = punti;
+        this.ISBN = ISBN;
+        this.delete = delete;
+
+        deleteLibroCartOnEvent();
+    }
 
     public LibroTable() {
     }
@@ -80,15 +92,33 @@ public class LibroTable {
         this.ISBN = ISBN;
     }
 
+    public Button getDelete() {
+        return delete;
+    }
+
+    public void setDelete(Button delete) {
+        this.delete = delete;
+    }
+
     public void addLibroCartOnEvent(){
-        LibroTable res = new LibroTable();
         addCart.setOnAction(e->{
             for(LibroTable libro: ControllerLibri.libri){
                 if(libro.getAddCart() == addCart) {
                     System.out.println("Libro trovato: " + libro.getISBN());
-                    ControllerLibri.cart.add(new Libro(libro.getISBN(),libro.getTitolo(),libro.getAutore(),Float.parseFloat(libro.getDescrizione()),libro.getPrezzo(),Integer.parseInt(libro.getPunti())));
+                    ControllerLibri.cart.add(new LibroTable(libro.getTitolo(),libro.getAutore(),libro.getDescrizione(),libro.getPrezzo(),libro.getPunti(),libro.getISBN(),new Button("delete")));
                 }
             }
         });
     }
+
+    private void deleteLibroCartOnEvent() {
+        delete.setOnAction(e->{
+            for(LibroTable libro: ControllerLibri.libri){
+                if(libro.getDelete() == delete) {
+                    ControllerLibri.cart.remove(libro);
+                }
+            }
+        });
+    }
+
 }

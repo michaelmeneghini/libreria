@@ -138,7 +138,6 @@ public class ControllerAggiungiLibro implements Initializable {
         }
         catch(Exception e){e.printStackTrace();}
         table.setItems(libri);
-
     }
 
     private void initCols(){

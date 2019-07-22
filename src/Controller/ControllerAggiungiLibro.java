@@ -41,6 +41,9 @@ public class ControllerAggiungiLibro implements Initializable {
     private TextField puntiField;
 
     @FXML
+    private TextField genereField;
+
+    @FXML
     private TableView<Libro> table;
 
     @FXML
@@ -64,6 +67,9 @@ public class ControllerAggiungiLibro implements Initializable {
     @FXML
     private TableColumn<Libro, String> punti;
 
+    @FXML
+    private TableColumn<Libro, String> genere;
+
     private ObservableList<Libro> libri = FXCollections.observableArrayList();
 
     @FXML
@@ -75,11 +81,12 @@ public class ControllerAggiungiLibro implements Initializable {
         String descrizione = descrizioneField.getText();
         String copieVendute = copieVenduteField.getText();
         String punti = puntiField.getText();
+        String genere = genereField.getText();
 
         if(isbn.length() > 0 && titolo.length() > 0 && autore.length() > 0 && prezzo.length()> 0 && descrizione.length() > 0 && copieVendute.length() > 0 && punti.length() > 0) {
             Connection db = DBConnector.getConnection();
             Statement st = db.createStatement();
-            PreparedStatement ps = db.prepareStatement("INSERT INTO public.libro (\"ISBN\", titolo, autore, prezzo, descrizione, copie_vendute, punti) VALUES(?, ?, ?, ?, ?, ?, ?);");
+            PreparedStatement ps = db.prepareStatement("INSERT INTO public.libro (\"ISBN\", titolo, autore, prezzo, descrizione, copie_vendute, punti, genere) VALUES(?, ?, ?, ?, ?, ?, ?, ?);");
             ps.setString(1, isbn);
             ps.setString(2, titolo);
             ps.setString(3, autore);
@@ -87,6 +94,7 @@ public class ControllerAggiungiLibro implements Initializable {
             ps.setString(5, descrizione);
             ps.setInt(6, Integer.parseInt(copieVendute));
             ps.setInt(7, Integer.parseInt(punti));
+            ps.setString(8, genere);
 
             int result = st.executeUpdate(ps.toString());
 
@@ -111,6 +119,7 @@ public class ControllerAggiungiLibro implements Initializable {
         descrizioneField.setText("");
         copieVenduteField.setText("");
         puntiField.setText("");
+        genereField.setText("");
 
     }
 
@@ -131,7 +140,7 @@ public class ControllerAggiungiLibro implements Initializable {
             ResultSet rs = st.executeQuery("Select * from libro;");
             while (rs.next()) {
                 libri.add( new Libro(rs.getString(1), rs.getString(2), rs.getString(3), rs.getFloat(4),
-                        rs.getString(5),  rs.getInt(6), rs.getInt(7)));
+                        rs.getString(5),  rs.getInt(6), rs.getInt(7), rs.getString(8)));
             }
             st.close();
             db.close();
@@ -149,6 +158,7 @@ public class ControllerAggiungiLibro implements Initializable {
         descrizione.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
         copie_vendute.setCellValueFactory(new PropertyValueFactory<>("copie_vendute"));
         punti.setCellValueFactory(new PropertyValueFactory<>("punti"));
+        genere.setCellValueFactory(new PropertyValueFactory<>("genere"));
 
     }
 }

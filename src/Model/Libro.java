@@ -8,8 +8,9 @@ public class Libro {
     String descrizione;
     int punti;
     int copie_vendute;
+    String genere;
 
-    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int punti) {
+    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int punti, String genere) {
         this.ISBN = ISBN;
         this.titolo = titolo;
         this.autore = autore;
@@ -17,9 +18,10 @@ public class Libro {
         this.descrizione = descrizione;
         this.punti = punti;
         this.copie_vendute = 0;
+        this.genere = genere;
     }
 
-    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int punti,int copie_vendute) {
+    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int punti,int copie_vendute, String genere) {
         this.ISBN = ISBN;
         this.titolo = titolo;
         this.autore = autore;
@@ -27,6 +29,7 @@ public class Libro {
         this.descrizione = descrizione;
         this.punti = punti;
         this.copie_vendute = copie_vendute;
+        this.genere = genere;
     }
 
 

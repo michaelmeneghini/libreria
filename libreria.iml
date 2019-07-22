@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../jfoenix.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../fontawesomefx-8.9.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../postgres.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jfoenix.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -28,7 +28,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../fontawesomefx-8.9.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../postgres.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -4,14 +4,14 @@
 <?import com.jfoenix.controls.JFXScrollPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerAggiungiLibro">
    <children>
-      <VBox layoutX="6.0" prefHeight="600.0" prefWidth="200.0">
+      <VBox layoutX="6.0" prefHeight="600.0" prefWidth="200.0" stylesheets="@DarkTheme.css">
          <children>
             <JFXTextField fx:id="isbnField" promptText="ISBN">
                <VBox.margin>
@@ -52,22 +52,22 @@
          </children>
       </VBox>
       <JFXScrollPane layoutX="200.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@DarkTheme.css">
-         <children>
-            <TreeTableView prefHeight="580.0" stylesheets="@DarkTheme.css">
-              <columns>
-                <TreeTableColumn prefWidth="75.0" text="ISBN" />
-                <TreeTableColumn prefWidth="75.0" text="Titolo" />
-                  <TreeTableColumn prefWidth="92.0" text="Autore" />
-                  <TreeTableColumn prefWidth="70.0" text="Prezzo" />
-                  <TreeTableColumn prefWidth="208.0" text="Descrizione" />
-                  <TreeTableColumn maxWidth="194.0" prefWidth="126.0" resizable="false" text="Copie vendute" />
-                  <TreeTableColumn minWidth="0.0" prefWidth="133.0" text="Punti" />
-              </columns>
-            </TreeTableView>
-         </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
+         <children>
+            <TableView prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="ISBN" />
+                  <TableColumn prefWidth="75.0" text="Titolo" />
+                  <TableColumn prefWidth="75.0" text="Autore" />
+                  <TableColumn prefWidth="75.0" text="Prezzo" />
+                  <TableColumn prefWidth="142.0" text="Descrizione" />
+                  <TableColumn prefWidth="159.0" text="Copie vendute" />
+                  <TableColumn prefWidth="177.0" text="Punti" />
+              </columns>
+            </TableView>
+         </children>
       </JFXScrollPane>
    </children>
 </AnchorPane>

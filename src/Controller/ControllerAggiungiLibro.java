@@ -60,6 +60,9 @@ public class ControllerAggiungiLibro {
                 System.out.println("Libro inserito correttamente");
             else
                 System.out.println("Nada");
+
+            db.close();
+            st.close();
         }
         else{
             System.out.println("Inserire tutto correttamente");

@@ -120,6 +120,8 @@ public class ControllerRegister  {
                 } else {
                     System.out.println("Nada");
                 }
+                db.close();
+                st.close();
 
                 Parent registerFrameParent=FXMLLoader.load(getClass().getResource("../View/LoginFrame.fxml"));
                 Scene registerFrame=new Scene(registerFrameParent);

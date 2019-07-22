@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.DBConnector;
-import Model.Libro;
 import Model.LibroTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,16 +9,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 
-import javax.swing.plaf.nimbus.State;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
@@ -67,8 +63,6 @@ public class ControllerLibri implements Initializable {
         col_punti.setCellValueFactory(new PropertyValueFactory<>("Punti"));
         col_button.setCellValueFactory(new PropertyValueFactory<>("addCart"));
 
-
-
         editableCols();
     }
 
@@ -103,7 +97,7 @@ public class ControllerLibri implements Initializable {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setPunti(e.getNewValue());
         });
 
-        table_libri.setEditable(true);
+        //table_libri.setEditable(true);
     }
 
     private void loadData(){
@@ -116,6 +110,8 @@ public class ControllerLibri implements Initializable {
             while (rs.next()) {
                 libri.add(new LibroTable(rs.getString(1), rs.getString(2), String.valueOf(rs.getFloat(3)), rs.getString(4), String.valueOf(rs.getString(5)), new Button("AddToCart")));
             }
+            db.close();
+            st.close();
         }
         catch(Exception e){e.printStackTrace();}
         table_libri.setItems(libri);

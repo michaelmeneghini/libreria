@@ -22,5 +22,8 @@ public class ControllerVerificaOrdini {
             listaOrdini.add(new Ordine(rs.getInt(1),rs.getString(2),rs.getFloat(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)));
         }
 
+        db.close();
+        st.close();
+
     }
 }

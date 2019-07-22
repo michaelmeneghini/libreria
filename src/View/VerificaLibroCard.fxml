@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerResponsabile">
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerVerificaLibroCardResp">
    <children>
-      <Label layoutX="214.0" layoutY="164.0" text="libro card" />
+      <TableView fx:id="table" layoutX="14.0" layoutY="14.0" prefHeight="572.0" prefWidth="567.0">
+        <columns>
+          <TableColumn fx:id="codice" prefWidth="75.0" text="Codice" />
+          <TableColumn fx:id="nome" prefWidth="103.0" text="Nome" />
+            <TableColumn fx:id="cognome" prefWidth="106.0" text="Cognome" />
+            <TableColumn fx:id="email" prefWidth="211.0" text="email" />
+            <TableColumn fx:id="punti" minWidth="0.0" prefWidth="71.0" text="Punti" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

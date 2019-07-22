@@ -36,4 +36,5 @@ public class Libro_Card {
     public void setPunti(int punti) {
         this.punti = punti;
     }
+
 }

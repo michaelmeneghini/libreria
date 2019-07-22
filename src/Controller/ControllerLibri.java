@@ -128,8 +128,8 @@ public class ControllerLibri implements Initializable {
             while (rs.next()) {
                 libri.add(new LibroTable(rs.getString(2), rs.getString(3), String.valueOf(rs.getFloat(4)), rs.getString(5), String.valueOf(rs.getString(6)), new Button("AddToCart"),rs.getString(1)));
             }
-            db.close();
             st.close();
+            db.close();
         }
         catch(Exception e){e.printStackTrace();}
         table_libri.setItems(libri);

@@ -35,6 +35,8 @@ public class ControllerLogin {
         @FXML
         private Label login_error;
 
+        private static String loggedAs=null;
+
         @FXML
         public void registerButtonClick(ActionEvent event) throws IOException {
 
@@ -63,8 +65,10 @@ public class ControllerLogin {
                 //se è un responsabile apro la pagina da responsabile altrimenti apro la pagina da utente comune
                 if (checkResponsabile(emailReceived)) {
                     registerFrameParent = FXMLLoader.load(getClass().getResource("../View/Responsabile.fxml"));
+                    loggedAs=emailReceived;
                 } else {
                     registerFrameParent = FXMLLoader.load(getClass().getResource("../View/UtenteRegistrato.fxml"));
+                    loggedAs=emailReceived;
                 }
                 Scene registerFrame = new Scene(registerFrameParent);
                 Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
@@ -128,6 +132,10 @@ public class ControllerLogin {
             rs.next();
             return rs.getBoolean(1);
 
+        }
+
+        public static String getEmailLoggedas(){
+            return loggedAs;
         }
 
 }

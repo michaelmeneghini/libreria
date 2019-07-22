@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerResponsabile">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="200.0">
+         <children>
+            <JFXButton fx:id="verifica_ordini" layoutX="33.0" layoutY="36.0" onAction="#dynamicUpdateHandler" prefHeight="51.0" prefWidth="134.0" text="Verifica stato ordini" />
+            <JFXButton fx:id="verifica_libro_card" layoutX="33.0" layoutY="115.0" onAction="#dynamicUpdateHandler" prefHeight="51.0" prefWidth="134.0" text="Verifica libro card" />
+            <JFXButton fx:id="aggiungi_libro" layoutX="33.0" layoutY="205.0" onAction="#dynamicUpdateHandler" prefHeight="51.0" prefWidth="134.0" text="Aggiungi Libro" />
+            <JFXButton fx:id="log_out" layoutX="33.0" layoutY="497.0" onAction="#logout" prefHeight="51.0" prefWidth="134.0" text="Log Out" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchor_pane" prefHeight="600.0" prefWidth="700.0" stylesheets="@DarkTheme.css" />
+   </children>
+</HBox>

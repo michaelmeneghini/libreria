@@ -12,7 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 
 import java.sql.*;
@@ -52,12 +51,24 @@ public class ControllerLogin {
 
             login_error.setText("");
 
-            String emailRecieved=login_email.getText();
-            String passwordRecieved= login_password.getText();
+            String emailReceived=login_email.getText();
+            String passwordReceived= login_password.getText();
 
-            if(!isValidPassword(emailRecieved,passwordRecieved)){
+            if(!isValidPassword(emailReceived,passwordReceived)){
                 login_error.setText("Email non valida!");
             }
+
+            Parent registerFrameParent = null;
+            //se è un responsabile apro la pagina da responsabile altrimenti apro la pagina da utente comune
+            if( checkResponsabile(emailReceived) ){
+                registerFrameParent=FXMLLoader.load(getClass().getResource("../View/Responsabile.fxml"));
+            } else {
+                registerFrameParent=FXMLLoader.load(getClass().getResource("../View/UtenteRegistrato.fxml"));
+            }
+            Scene registerFrame=new Scene(registerFrameParent);
+            Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
+            window.setScene(registerFrame);
+            window.show();
 
         }
 
@@ -92,11 +103,24 @@ public class ControllerLogin {
              ps.setString(1,email);
              ps.setString(2,password);
              ResultSet rs = st.executeQuery(ps.toString());
-
+             db.close();
              if(rs.next())
                  return true;
              else
                  return false;
+        }
+
+        private boolean checkResponsabile(String email) throws SQLException {
+            Connection db = DBConnector.getConnection();
+            Statement st = db.createStatement();
+            PreparedStatement ps = db.prepareStatement("SELECT responsabile FROM utente WHERE email ILIKE ?");
+            ps.setString(1, email);
+            ResultSet rs = st.executeQuery(ps.toString());
+            db.close();
+
+            rs.next();
+            return rs.getBoolean(1);
+
         }
 
 }

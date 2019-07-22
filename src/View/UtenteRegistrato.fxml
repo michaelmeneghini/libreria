@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerUtenteRegistrato">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="profilo" layoutX="33.0" layoutY="27.0" mnemonicParsing="false" onAction="#dynamicPageUpdater" prefHeight="51.0" prefWidth="134.0" text="Profilo" />
+            <Button fx:id="classifiche" layoutX="33.0" layoutY="257.0" mnemonicParsing="false" onAction="#dynamicPageUpdater" prefHeight="51.0" prefWidth="134.0" text="Classifiche" />
+            <Button fx:id="libri" layoutX="33.0" layoutY="101.0" mnemonicParsing="false" onAction="#dynamicPageUpdater" prefHeight="51.0" prefWidth="134.0" text="Libri" />
+            <Button fx:id="carrello" layoutX="33.0" layoutY="178.0" mnemonicParsing="false" onAction="#dynamicPageUpdater" prefHeight="51.0" prefWidth="134.0" text="Carrello" />
+            <Button fx:id="ordini" layoutX="33.0" layoutY="333.0" mnemonicParsing="false" onAction="#dynamicPageUpdater" prefHeight="51.0" prefWidth="134.0" text="Ordini" />
+            <Button fx:id="log_out" layoutX="33.0" layoutY="519.0" mnemonicParsing="false" onAction="#logout" prefHeight="51.0" prefWidth="134.0" text="Log Out" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchor_pane" prefHeight="600.0" prefWidth="700.0" />
+   </children>
+</HBox>

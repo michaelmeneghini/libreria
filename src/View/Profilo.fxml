@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerProfilo">
    <children>
-      <Label layoutX="192.0" layoutY="176.0" text="profilo" />
+      <JFXButton layoutX="277.0" layoutY="330.0" onAction="#modificaDatiButtonClicked" text="MODIFICA DATI" />
+      <FontAwesomeIconView glyphName="USERS" layoutX="324.0" layoutY="64.0" size="50" />
+      <Label layoutX="323.0" layoutY="79.0" text="PROFILO" textFill="#b2b2b2" />
+      <Label layoutX="401.0" layoutY="152.0" text="Cognome:" textFill="#b2b2b2" />
+      <Label layoutX="129.0" layoutY="152.0" text="Nome:" textFill="#b2b2b2" />
+      <Label layoutX="112.0" layoutY="185.0" text="Indirizzo:" textFill="#b2b2b2" />
+      <Label layoutX="433.0" layoutY="185.0" text="Città:" textFill="#b2b2b2" />
+      <Label layoutX="130.0" layoutY="254.0" text="Email:" textFill="#b2b2b2" />
+      <Label layoutX="363.0" layoutY="254.0" prefHeight="16.0" prefWidth="112.0" text="Saldo LibroCard:" textFill="#b2b2b2" />
+      <Label layoutX="131.0" layoutY="220.0" text="C.A.P:" textFill="#b2b2b2" />
+      <Label layoutX="406.0" layoutY="220.0" text="Cellulare:" textFill="#b2b2b2" />
+      <Label fx:id="label_nome" layoutX="205.0" layoutY="152.0" textFill="#ffff8d" />
+      <Label fx:id="lable_cognome" layoutX="205.0" layoutY="185.0" textFill="#ffff8d" />
+      <Label fx:id="lable_cap" layoutX="205.0" layoutY="221.0" textFill="#ffff8d" />
+      <Label fx:id="lable_email" layoutX="205.0" layoutY="255.0" textFill="#ffff8d" />
+      <Label fx:id="lable_cognome" layoutX="501.0" layoutY="152.0" textFill="#ffff8d" />
+      <Label fx:id="lable_città" layoutX="501.0" layoutY="185.0" textFill="#ffff8d" />
+      <Label fx:id="lable_cellulare" layoutX="501.0" layoutY="220.0" textFill="#ffff8d" />
+      <Label fx:id="lable_libroCard" layoutX="501.0" layoutY="254.0" textFill="#ffff8d" />
    </children>
 </AnchorPane>

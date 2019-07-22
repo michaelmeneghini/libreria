@@ -3,16 +3,16 @@ package Model;
 public class Ordine {
     int id;
     String email;
-    int prezzo;
+    float prezzo;
     String pagamento;
     int punti;
     String indirizzo;
-    int cap;
+    String cap;
     String città;
     String nr_nome;
     String nr_cognome;
 
-    public Ordine(int id, String email, int prezzo, String pagamento, int punti, String indirizzo, int cap, String città, String nr_nome, String nr_cognome) {
+    public Ordine(int id, String email, float prezzo, String pagamento, int punti, String indirizzo, String cap, String città, String nr_nome, String nr_cognome) {
         this.id = id;
         this.email = email;
         this.prezzo = prezzo;
@@ -33,7 +33,7 @@ public class Ordine {
         return email;
     }
 
-    public int getPrezzo() {
+    public float getPrezzo() {
         return prezzo;
     }
 
@@ -49,7 +49,7 @@ public class Ordine {
         return indirizzo;
     }
 
-    public int getCap() {
+    public String getCap() {
         return cap;
     }
 
@@ -73,7 +73,7 @@ public class Ordine {
         this.email = email;
     }
 
-    public void setPrezzo(int prezzo) {
+    public void setPrezzo(float prezzo) {
         this.prezzo = prezzo;
     }
 
@@ -89,7 +89,7 @@ public class Ordine {
         this.indirizzo = indirizzo;
     }
 
-    public void setCap(int cap) {
+    public void setCap(String cap) {
         this.cap = cap;
     }
 

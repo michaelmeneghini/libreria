@@ -55,20 +55,22 @@ public class ControllerLogin {
             String passwordReceived= login_password.getText();
 
             if(!isValidPassword(emailReceived,passwordReceived)){
-                login_error.setText("Email non valida!");
+                login_error.setText("Email/Password insertite non valide!");
             }
+            else {
 
-            Parent registerFrameParent = null;
-            //se è un responsabile apro la pagina da responsabile altrimenti apro la pagina da utente comune
-            if( checkResponsabile(emailReceived) ){
-                registerFrameParent=FXMLLoader.load(getClass().getResource("../View/Responsabile.fxml"));
-            } else {
-                registerFrameParent=FXMLLoader.load(getClass().getResource("../View/UtenteRegistrato.fxml"));
+                Parent registerFrameParent = null;
+                //se è un responsabile apro la pagina da responsabile altrimenti apro la pagina da utente comune
+                if (checkResponsabile(emailReceived)) {
+                    registerFrameParent = FXMLLoader.load(getClass().getResource("../View/Responsabile.fxml"));
+                } else {
+                    registerFrameParent = FXMLLoader.load(getClass().getResource("../View/UtenteRegistrato.fxml"));
+                }
+                Scene registerFrame = new Scene(registerFrameParent);
+                Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+                window.setScene(registerFrame);
+                window.show();
             }
-            Scene registerFrame=new Scene(registerFrameParent);
-            Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
-            window.setScene(registerFrame);
-            window.show();
 
         }
 
@@ -97,6 +99,9 @@ public class ControllerLogin {
 
         //Metodo controllo validità coppia email-password
          private boolean isValidPassword(String email,String password) throws SQLException {
+            if(email.length() == 0 || password.length() == 0){
+                return false;
+            }
              Connection db = DBConnector.getConnection();
              Statement st = db.createStatement();
              PreparedStatement ps = db.prepareStatement("SELECT * FROM utente WHERE email ILIKE ? AND password LIKE ?");
@@ -111,6 +116,8 @@ public class ControllerLogin {
         }
 
         private boolean checkResponsabile(String email) throws SQLException {
+            if(email.length() == 0)
+                return false;
             Connection db = DBConnector.getConnection();
             Statement st = db.createStatement();
             PreparedStatement ps = db.prepareStatement("SELECT responsabile FROM utente WHERE email ILIKE ?");

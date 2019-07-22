@@ -1,13 +1,13 @@
 package Model;
 
-import java.sql.Time;
+import java.sql.Date;
 
 public class Libro_Card {
     int  id;
-    Time data_emissione;
+    Date data_emissione;
     int punti;
 
-    public Libro_Card(int id, Time data_emissione, int punti) {
+    public Libro_Card(int id, Date data_emissione, int punti) {
         this.id = id;
         this.data_emissione = data_emissione;
         this.punti = punti;
@@ -17,7 +17,7 @@ public class Libro_Card {
         return id;
     }
 
-    public Time getData_emissione() {
+    public Date getData_emissione() {
         return data_emissione;
     }
 
@@ -29,7 +29,7 @@ public class Libro_Card {
         this.id = id;
     }
 
-    public void setData_emissione(Time data_emissione) {
+    public void setData_emissione(Date data_emissione) {
         this.data_emissione = data_emissione;
     }
 

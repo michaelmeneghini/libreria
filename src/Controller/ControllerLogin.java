@@ -37,6 +37,7 @@ public class ControllerLogin {
 
         private static String loggedAs=null;
 
+
         @FXML
         public void registerButtonClick(ActionEvent event) throws IOException {
 
@@ -106,17 +107,22 @@ public class ControllerLogin {
             if(email.length() == 0 || password.length() == 0){
                 return false;
             }
-             Connection db = DBConnector.getConnection();
+            Connection db = DBConnector.getConnection();
              Statement st = db.createStatement();
              PreparedStatement ps = db.prepareStatement("SELECT * FROM utente WHERE email ILIKE ? AND password LIKE ?");
              ps.setString(1,email);
              ps.setString(2,password);
              ResultSet rs = st.executeQuery(ps.toString());
-             db.close();
-             if(rs.next())
+             if(rs.next()) {
+                 db.close();
+                 st.close();
                  return true;
-             else
+             }
+             else{
+                 db.close();
+                 st.close();
                  return false;
+             }
         }
 
         private boolean checkResponsabile(String email) throws SQLException {

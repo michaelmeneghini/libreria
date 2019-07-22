@@ -19,12 +19,12 @@
       <Label layoutX="131.0" layoutY="220.0" text="C.A.P:" textFill="#b2b2b2" />
       <Label layoutX="406.0" layoutY="220.0" text="Cellulare:" textFill="#b2b2b2" />
       <Label fx:id="label_nome" layoutX="205.0" layoutY="152.0" textFill="#ffff8d" />
-      <Label fx:id="lable_cognome" layoutX="205.0" layoutY="185.0" textFill="#ffff8d" />
-      <Label fx:id="lable_cap" layoutX="205.0" layoutY="221.0" textFill="#ffff8d" />
-      <Label fx:id="lable_email" layoutX="205.0" layoutY="255.0" textFill="#ffff8d" />
-      <Label fx:id="lable_cognome" layoutX="501.0" layoutY="152.0" textFill="#ffff8d" />
-      <Label fx:id="lable_città" layoutX="501.0" layoutY="185.0" textFill="#ffff8d" />
-      <Label fx:id="lable_cellulare" layoutX="501.0" layoutY="220.0" textFill="#ffff8d" />
-      <Label fx:id="lable_libroCard" layoutX="501.0" layoutY="254.0" textFill="#ffff8d" />
+      <Label fx:id="label_indirizzo" layoutX="205.0" layoutY="185.0" textFill="#ffff8d" />
+      <Label fx:id="label_cap" layoutX="205.0" layoutY="221.0" textFill="#ffff8d" />
+      <Label fx:id="label_email" layoutX="205.0" layoutY="255.0" textFill="#ffff8d" />
+      <Label fx:id="label_cognome" layoutX="501.0" layoutY="152.0" textFill="#ffff8d" />
+      <Label fx:id="label_città" layoutX="501.0" layoutY="185.0" textFill="#ffff8d" />
+      <Label fx:id="label_cellulare" layoutX="501.0" layoutY="220.0" textFill="#ffff8d" />
+      <Label fx:id="label_libroCard" layoutX="501.0" layoutY="254.0" textFill="#ffff8d" />
    </children>
 </AnchorPane>

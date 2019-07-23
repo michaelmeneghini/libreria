@@ -3,21 +3,21 @@ package Controller;
 import Model.DBConnector;
 import Model.Libro;
 import Model.LibroTable;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXTextField;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import org.postgresql.jdbc.EscapedFunctions2;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import static Controller.ControllerLibri.cart;
@@ -52,10 +52,47 @@ public class ControllerCarrello implements Initializable {
     @FXML
     private Label puntiLabel;
 
+    @FXML
+    private Button aggiorna_carrello;
+
+    @FXML
+    private ComboBox pagamento;
+
+    @FXML
+    private JFXCheckBox check_indirizzo;
+
+    @FXML
+    private JFXTextField indirizzoField;
+
+    @FXML
+    private JFXTextField cittàField;
+
+    @FXML
+    private JFXTextField capField;
+
+    private Float saldo = new Float(0);
+    private int punti = 0;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //combobox
+        pagamento.getItems().add("Carta di credito");
+        pagamento.getItems().add("Paypal");
+        pagamento.getItems().add("Contrassegno");
+
+        pagamento.setOnAction(this::paymentHandler);
+
+
         initTable();
         loadData();
+    }
+
+    private void paymentHandler(Event event) {
+
+        // combo box
+
     }
 
     private void initTable() {initCols();}
@@ -64,7 +101,7 @@ public class ControllerCarrello implements Initializable {
 
         col_titolo.setCellValueFactory(new PropertyValueFactory<>("Titolo"));
         col_autore.setCellValueFactory(new PropertyValueFactory<>("Autore"));
-        col_prezzo.setCellValueFactory(new PropertyValueFactory<>("Descrizione"));
+        col_prezzo.setCellValueFactory(new PropertyValueFactory<>("Prezzo"));
         col_punti.setCellValueFactory(new PropertyValueFactory<>("Punti"));
         col_delete.setCellValueFactory(new PropertyValueFactory<>("Delete"));
 
@@ -72,8 +109,9 @@ public class ControllerCarrello implements Initializable {
 
 
     private void loadData(){
-        float saldo = 0;
-        int punti = 0;
+
+        table_cart.setItems(cart);
+
         try {
             Connection db = DBConnector.getConnection();
             PreparedStatement ps = db.prepareStatement("SELECT prezzo,punti FROM libro WHERE \"ISBN\" ILIKE ?;");
@@ -93,9 +131,100 @@ public class ControllerCarrello implements Initializable {
             System.out.println(e.toString());
         }
 
-        saldoLabel.setText(String.valueOf(saldo));
+        saldoLabel.setText(String.format("%5.2f",saldo));
         puntiLabel.setText(String.valueOf(punti));
 
-        table_cart.setItems(cart);
     }
+
+    @FXML
+    private void updateLabels(){
+        loadData();
+    }
+
+    @FXML
+    private void addressHandler(){
+
+        if(check_indirizzo.isSelected() ){
+            indirizzoField.setDisable(true);
+            cittàField.setDisable(true);
+            capField.setDisable(true);
+        } else {
+            indirizzoField.setDisable(false);
+            cittàField.setDisable(false);
+            capField.setDisable(false);
+        }
+
+    }
+
+    @FXML
+    private void placeOrder() throws SQLException {
+        Connection db = DBConnector.getConnection();
+        Random r = new Random();
+        String stato_ordine = generateStatus( r.nextInt(3));
+        PreparedStatement ps;
+        String saldoDB = saldoLabel.getText().replace(',','.');
+        if(check_indirizzo.isSelected()){
+            //Indirizzo predefinito
+            ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, stato)  VALUES ('?', ?, '?', ?, '?');");
+            ps.setString(1,ControllerLogin.getEmailLoggedas());
+            ps.setFloat(2,Float.parseFloat(saldoDB));
+            System.out.println(pagamento.getValue().toString());
+            ps.setString(3,pagamento.getValue().toString());
+            ps.setInt(4,Integer.parseInt(puntiLabel.getText()));
+            ps.setString(5, stato_ordine);
+        }
+        else{
+            //Check Indirizzo Field
+            ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, indirizzo, cap, citta, stato)  VALUES(?,'?', ?, '?', ?, '?', '?', '?', '?');");
+            ps.setString(1,ControllerLogin.getEmailLoggedas());
+            ps.setFloat(2,Float.parseFloat(saldoDB));
+            ps.setString(3,pagamento.getValue().toString());
+            ps.setInt(4,Integer.parseInt(puntiLabel.getText()));
+            ps.setString(5, indirizzoField.getText());
+            ps.setString(6, capField.getText());
+            ps.setString(7, cittàField.getText());
+            ps.setString(8, stato_ordine);
+        }
+        Statement st = db.createStatement();
+        int success = st.executeUpdate(ps.toString());
+        if(success == 1){
+            int id;
+            ResultSet rs = st.executeQuery("SELECT id FROM ordine ORDER BY id DESC LIMIT 1 ;");
+            rs.next();
+            id = rs.getInt(1);
+            //aggiunta dei libri in tabella
+            for(LibroTable l: ControllerLibri.cart){
+                PreparedStatement pss = db.prepareStatement("INSERT INTO public.ordine_libro (\"ISBN\",id) VALUES('?',?);");
+                pss.setString(1,l.getISBN());
+                pss.setInt(2,id);
+                st.executeUpdate(pss.toString());
+                pss.close();
+            }
+        }
+
+        System.out.println("Ordine piazzato");
+
+        st.close();
+        db.close();
+        ps.close();
+    }
+
+    private String generateStatus(int stato) {
+
+        String res = "";
+        switch ( stato ){
+            case 0:
+                res = "In elaborazione";
+                break;
+            case 1:
+                res = "In transito";
+                break;
+            case 2:
+                res = "Consegnato";
+                break;
+
+        }
+        return res;
+    }
+
 }

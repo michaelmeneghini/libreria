@@ -77,8 +77,8 @@
                   <TableColumn fx:id="prezzo" prefWidth="75.0" text="Prezzo" />
                   <TableColumn fx:id="descrizione" prefWidth="142.0" text="Descrizione" />
                   <TableColumn fx:id="copie_vendute" prefWidth="159.0" text="Copie vendute" />
-                  <TableColumn fx:id="punti" prefWidth="177.0" text="Punti" />
-                  <TableColumn fx:id="genere" prefWidth="75.0" text="Genere" />
+                  <TableColumn fx:id="punti" prefWidth="150.0" text="Punti" />
+                  <!-- <TableColumn fx:id="genere" prefWidth="100.0" text="Genere" /> -->
               </columns>
             </TableView>
          </children>

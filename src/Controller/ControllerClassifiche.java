@@ -72,8 +72,6 @@ public class ControllerClassifiche implements Initializable {
 
     private void choiceHandler(Event event) {
 
-        System.out.println( combo_box.getValue().toString());
-
         String choice = combo_box.getValue().toString().toLowerCase();
         loadData(choice);
 

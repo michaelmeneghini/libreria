@@ -1,15 +1,19 @@
 package Model;
 
 import Controller.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 
 public class LibroTable {
-    private String titolo,autore,descrizione,prezzo,punti,ISBN;
+    private String titolo,autore,descrizione,ISBN;
+    private int punti;
+    private float prezzo;
 
     private Button addCart;
     private Button delete;
 
-    public LibroTable(String titolo, String autore, String descrizione, String prezzo, String punti, Button addCart, String ISBN) {
+    public LibroTable(String titolo, String autore, String descrizione, float prezzo, int punti, Button addCart, String ISBN) {
         this.titolo = titolo;
         this.autore = autore;
         this.descrizione = descrizione;
@@ -21,7 +25,7 @@ public class LibroTable {
         addLibroCartOnEvent();
     }
 
-    public LibroTable(String titolo, String autore, String descrizione, String prezzo, String punti, String ISBN, Button delete) {
+    public LibroTable(String titolo, String autore, String descrizione, float prezzo, int punti, String ISBN, Button delete) {
         this.titolo = titolo;
         this.autore = autore;
         this.descrizione = descrizione;
@@ -60,19 +64,19 @@ public class LibroTable {
         this.descrizione = descrizione;
     }
 
-    public String getPrezzo() {
+    public float getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(String prezzo) {
+    public void setPrezzo(float prezzo) {
         this.prezzo = prezzo;
     }
 
-    public String getPunti() {
+    public int getPunti() {
         return punti;
     }
 
-    public void setPunti(String punti) {
+    public void setPunti(int punti) {
         this.punti = punti;
     }
 
@@ -104,7 +108,6 @@ public class LibroTable {
         addCart.setOnAction(e->{
             for(LibroTable libro: ControllerLibri.libri){
                 if(libro.getAddCart() == addCart) {
-                    System.out.println("Libro trovato: " + libro.getISBN());
                     ControllerLibri.cart.add(new LibroTable(libro.getTitolo(),libro.getAutore(),libro.getDescrizione(),libro.getPrezzo(),libro.getPunti(),libro.getISBN(),new Button("delete")));
                 }
             }
@@ -113,9 +116,10 @@ public class LibroTable {
 
     private void deleteLibroCartOnEvent() {
         delete.setOnAction(e->{
-            for(LibroTable libro: ControllerLibri.libri){
+            for(LibroTable libro: ControllerLibri.cart){
                 if(libro.getDelete() == delete) {
                     ControllerLibri.cart.remove(libro);
+                    break;
                 }
             }
         });

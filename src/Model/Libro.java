@@ -21,7 +21,7 @@ public class Libro {
         this.genere = genere;
     }
 
-    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int punti,int copie_vendute, String genere) {
+    public Libro(String ISBN, String titolo, String autore, float prezzo, String descrizione, int copie_vendute, int punti,String genere) {
         this.ISBN = ISBN;
         this.titolo = titolo;
         this.autore = autore;
@@ -89,17 +89,17 @@ public class Libro {
         this.punti = punti;
     }
 
-
     @Override
     public String toString() {
         return "Libro{" +
-                "ISBN=" + ISBN +
+                "ISBN='" + ISBN + '\'' +
                 ", titolo='" + titolo + '\'' +
                 ", autore='" + autore + '\'' +
                 ", prezzo=" + prezzo +
                 ", descrizione='" + descrizione + '\'' +
-                ", copie_vendute=" + copie_vendute +
                 ", punti=" + punti +
+                ", copie_vendute=" + copie_vendute +
+                ", genere='" + genere + '\'' +
                 '}';
     }
 }

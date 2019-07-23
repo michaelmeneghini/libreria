@@ -131,6 +131,19 @@ public class ControllerAggiungiLibro implements Initializable {
 
     }
 
+    private void initCols(){
+
+        ISBN.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
+        titolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
+        autore.setCellValueFactory(new PropertyValueFactory<>("autore"));
+        prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
+        descrizione.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
+        copie_vendute.setCellValueFactory(new PropertyValueFactory<>("copie_vendute"));
+        punti.setCellValueFactory(new PropertyValueFactory<>("punti"));
+        //genere.setCellValueFactory(new PropertyValueFactory<>("genere"));
+
+    }
+
     private void loadData() {
 
         libri.clear();
@@ -147,18 +160,5 @@ public class ControllerAggiungiLibro implements Initializable {
         }
         catch(Exception e){e.printStackTrace();}
         table.setItems(libri);
-    }
-
-    private void initCols(){
-
-        ISBN.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
-        titolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
-        autore.setCellValueFactory(new PropertyValueFactory<>("autore"));
-        prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
-        descrizione.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
-        copie_vendute.setCellValueFactory(new PropertyValueFactory<>("copie_vendute"));
-        punti.setCellValueFactory(new PropertyValueFactory<>("punti"));
-        genere.setCellValueFactory(new PropertyValueFactory<>("genere"));
-
     }
 }

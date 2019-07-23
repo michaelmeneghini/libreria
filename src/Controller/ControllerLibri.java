@@ -18,6 +18,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 public class ControllerLibri implements Initializable {
@@ -51,7 +52,7 @@ public class ControllerLibri implements Initializable {
 
     public static ObservableList<LibroTable> libri;
 
-    public static ObservableList<LibroTable> cart;
+    public static ObservableList<LibroTable> cart = FXCollections.observableArrayList();
 
     public void initialize(URL location, ResourceBundle resources) {
         initTable();
@@ -65,59 +66,17 @@ public class ControllerLibri implements Initializable {
     private void initCols(){
 
         col_ISBN.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
-        col_titolo.setCellValueFactory(new PropertyValueFactory<>("Titolo"));
-        col_autore.setCellValueFactory(new PropertyValueFactory<>("Autore"));
-        col_prezzo.setCellValueFactory(new PropertyValueFactory<>("Prezzo"));
-        col_desc.setCellValueFactory(new PropertyValueFactory<>("Descrizione"));
-        col_punti.setCellValueFactory(new PropertyValueFactory<>("Punti"));
+        col_titolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
+        col_autore.setCellValueFactory(new PropertyValueFactory<>("autore"));
+        col_prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
+        col_desc.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
+        col_punti.setCellValueFactory(new PropertyValueFactory<>("punti"));
         col_button.setCellValueFactory(new PropertyValueFactory<>("addCart"));
-
-        editableCols();
-    }
-
-    private void editableCols(){
-
-        col_ISBN.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        col_ISBN.setOnEditCommit(e->{
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setISBN(e.getNewValue());
-        });
-
-        col_titolo.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        col_titolo.setOnEditCommit(e->{
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setTitolo(e.getNewValue());
-        });
-
-        col_autore.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        col_autore.setOnEditCommit(e->{
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setAutore(e.getNewValue());
-        });
-
-        col_prezzo.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        col_prezzo.setOnEditCommit(e->{
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setPrezzo(e.getNewValue());
-        });
-
-        col_desc.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        col_desc.setOnEditCommit(e->{
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setDescrizione(e.getNewValue());
-        });
-
-        col_punti.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        col_punti.setOnEditCommit(e->{
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setPunti(e.getNewValue());
-        });
 
     }
 
     private void loadData(){
         libri = FXCollections.observableArrayList();
-        cart = FXCollections.observableArrayList();
 
 
         Connection db = DBConnector.getConnection();
@@ -125,7 +84,7 @@ public class ControllerLibri implements Initializable {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("Select * FROM libro;");
             while (rs.next()) {
-                libri.add(new LibroTable(rs.getString(2), rs.getString(3), String.valueOf(rs.getFloat(4)), rs.getString(5), String.valueOf(rs.getString(6)), new Button("AddToCart"),rs.getString(1)));
+                libri.add(new LibroTable(rs.getString("titolo"),rs.getString("autore"),rs.getString("descrizione"),rs.getFloat("prezzo"),rs.getInt("punti"),new Button("Ordina"),rs.getString(1)));
             }
             st.close();
             db.close();

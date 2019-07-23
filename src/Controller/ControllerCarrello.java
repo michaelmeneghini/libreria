@@ -11,7 +11,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import org.postgresql.jdbc.EscapedFunctions2;
 
 import java.net.URL;
 import java.sql.Connection;

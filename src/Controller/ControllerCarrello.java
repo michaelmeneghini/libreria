@@ -112,6 +112,9 @@ public class ControllerCarrello implements Initializable {
 
         table_cart.setItems(cart);
 
+        saldo = 0f;
+        punti = 0;
+
         try {
             Connection db = DBConnector.getConnection();
             PreparedStatement ps = db.prepareStatement("SELECT prezzo,punti FROM libro WHERE \"ISBN\" ILIKE ?;");
@@ -158,6 +161,10 @@ public class ControllerCarrello implements Initializable {
 
     @FXML
     private void placeOrder() throws SQLException {
+
+        //Aggiorno il carrello nel caso non venisse fatto prima di effettuare l'ordine
+        loadData();
+
         Connection db = DBConnector.getConnection();
         Random r = new Random();
         String stato_ordine = generateStatus( r.nextInt(3));
@@ -165,17 +172,17 @@ public class ControllerCarrello implements Initializable {
         String saldoDB = saldoLabel.getText().replace(',','.');
         if(check_indirizzo.isSelected()){
             //Indirizzo predefinito
-            ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, stato)  VALUES ('?', ?, '?', ?, '?');");
+            ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, stato)  VALUES (?, ?, ?, ?, ?);");
             ps.setString(1,ControllerLogin.getEmailLoggedas());
             ps.setFloat(2,Float.parseFloat(saldoDB));
             System.out.println(pagamento.getValue().toString());
-            ps.setString(3,pagamento.getValue().toString());
+            ps.setString(3, pagamento.getValue().toString());
             ps.setInt(4,Integer.parseInt(puntiLabel.getText()));
             ps.setString(5, stato_ordine);
         }
         else{
             //Check Indirizzo Field
-            ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, indirizzo, cap, citta, stato)  VALUES(?,'?', ?, '?', ?, '?', '?', '?', '?');");
+            ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, indirizzo, cap, citta, stato)  VALUES(?,?, ?, ?, ?, ?, ?, ?, ?);");
             ps.setString(1,ControllerLogin.getEmailLoggedas());
             ps.setFloat(2,Float.parseFloat(saldoDB));
             ps.setString(3,pagamento.getValue().toString());
@@ -194,13 +201,35 @@ public class ControllerCarrello implements Initializable {
             id = rs.getInt(1);
             //aggiunta dei libri in tabella
             for(LibroTable l: ControllerLibri.cart){
-                PreparedStatement pss = db.prepareStatement("INSERT INTO public.ordine_libro (\"ISBN\",id) VALUES('?',?);");
+                PreparedStatement pss = db.prepareStatement("INSERT INTO public.ordine_libro (\"ISBN\",id) VALUES(?,?);");
                 pss.setString(1,l.getISBN());
                 pss.setInt(2,id);
                 st.executeUpdate(pss.toString());
                 pss.close();
+
+                //Aumento le copie vendute dei libri acquistati
+                ps = db.prepareStatement("UPDATE libro SET copie_vendute = copie_vendute+1 WHERE \"ISBN\" ILIKE ?");
+                ps.setString(1, l.getISBN());
+                st.executeUpdate(ps.toString());
+
             }
         }
+
+        //Aumento i punti della libro card dell'utente
+        ps = db.prepareStatement("UPDATE libro_card SET punti = punti + ? WHERE id = ?");
+        ps.setInt(1, Integer.parseInt(puntiLabel.getText()));
+
+        PreparedStatement lc = db.prepareStatement("SELECT libro_card FROM utente WHERE email ILIKE ?");
+        lc.setString(1, ControllerLogin.getEmailLoggedas());
+        ResultSet resultSet = st.executeQuery(lc.toString());
+        resultSet.next();
+        lc.close();
+
+        ps.setInt(2, resultSet.getInt(1));
+        st.executeUpdate(ps.toString());
+
+        //pulisco il carrello
+        cart.clear();
 
         System.out.println("Ordine piazzato");
 

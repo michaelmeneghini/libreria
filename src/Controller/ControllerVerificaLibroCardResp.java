@@ -1,11 +1,7 @@
 package Controller;
 
 import Model.DBConnector;
-import Model.LibroTable;
-import Model.Libro_Card;
 import Model.Libro_CardTable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;

@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.DBConnector;
-import Model.Libro;
 import Model.LibroTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

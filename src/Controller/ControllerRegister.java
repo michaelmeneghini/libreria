@@ -16,8 +16,6 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.regex.Pattern;
 
-import static java.lang.Integer.parseInt;
-
 public class ControllerRegister  {
 
     @FXML

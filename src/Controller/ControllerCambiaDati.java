@@ -45,8 +45,16 @@ public class ControllerCambiaDati implements Initializable {
     @FXML
     void fattoButtonClicked(ActionEvent event) throws IOException {
 
-        //controlli
+        //TODO: Prendersi i vari dati dai TextField--> Controllare che almeno un campo sia diverso-->spedire al DB
+        String indirizzo=mod_indirizzo.getText();
+        String cellulare=mod_cellulare.getText();
+        String cap=mod_cap.getText();
+        String nome=mod_nome.getText();
+        String cognome=mod_cognome.getText();
+        String città=mod_città.getText();
 
+
+        //Ritorno alla schermata di profilo
         Parent root = FXMLLoader.load(getClass().getResource("../View/Profilo.fxml"));
         anchor_pane.getChildren().setAll(root);
 

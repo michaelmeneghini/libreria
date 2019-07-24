@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="995.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCarrello">
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="764.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCarrello">
    <children>
       <TableView fx:id="table_cart" prefHeight="343.0" prefWidth="746.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columns>
@@ -20,17 +21,23 @@
             <TableColumn fx:id="col_delete" prefWidth="156.0" />
         </columns>
       </TableView>
-      <Label layoutX="816.0" layoutY="35.0" prefHeight="21.0" prefWidth="121.0" text="Saldo Totale" textFill="#b2b2b2" />
-      <Label layoutX="810.0" layoutY="117.0" text="Punti Totali" textFill="#b2b2b2" />
-      <Label fx:id="saldoLabel" layoutX="816.0" layoutY="66.0" prefHeight="21.0" prefWidth="82.0" textFill="#b2b2b2" />
-      <Label fx:id="puntiLabel" layoutX="811.0" layoutY="161.0" prefHeight="21.0" prefWidth="40.0" textFill="#b2b2b2" />
-      <Button fx:id="checkout" layoutX="830.0" layoutY="522.0" mnemonicParsing="false" onAction="#placeOrder" text="CheckOut" />
-      <Button fx:id="aggiorna_carrello" layoutX="804.0" layoutY="221.0" mnemonicParsing="false" onAction="#updateLabels" text="Aggiorna carrello" />
-      <ComboBox fx:id="pagamento" layoutX="30.0" layoutY="413.0" prefWidth="150.0" />
-      <Label layoutX="29.0" layoutY="377.0" prefHeight="21.0" prefWidth="150.0" text="Metodo di pagamento" textFill="#b2b2b2" />
-      <JFXCheckBox fx:id="check_indirizzo" checkedColor="#b2b2b2" layoutX="258.0" layoutY="418.0" onMouseClicked="#addressHandler" selected="true" text="Usa l'indirizzo da te imopstato" textFill="#b2b2b2" />
-      <JFXTextField fx:id="indirizzoField" disable="true" layoutX="531.0" layoutY="413.0" promptText="Indirizzo" unFocusColor="#b2b2b2" />
-      <JFXTextField fx:id="cittàField" disable="true" layoutX="531.0" layoutY="459.0" promptText="Città" unFocusColor="#b2b2b2" />
-      <JFXTextField fx:id="capField" disable="true" layoutX="531.0" layoutY="507.0" promptText="Cap" unFocusColor="#b2b2b2" />
+      <Label layoutX="10.0" layoutY="374.0" prefHeight="21.0" prefWidth="121.0" text="Saldo Totale" textFill="#b2b2b2" />
+      <Label layoutX="208.0" layoutY="377.0" text="Punti Totali" textFill="#b2b2b2" />
+      <Label fx:id="saldoLabel" layoutX="102.0" layoutY="374.0" prefHeight="21.0" prefWidth="82.0" textFill="#b2b2b2" />
+      <Label fx:id="puntiLabel" layoutX="295.0" layoutY="375.0" prefHeight="21.0" prefWidth="40.0" textFill="#b2b2b2" />
+      <Button fx:id="checkout" layoutX="616.0" layoutY="493.0" mnemonicParsing="false" onAction="#placeOrder" text="CheckOut" />
+      <Button fx:id="aggiorna_carrello" layoutX="594.0" layoutY="368.0" mnemonicParsing="false" onAction="#updateLabels" text="Aggiorna carrello" />
+      <ComboBox fx:id="pagamento" layoutX="10.0" layoutY="414.0" prefHeight="26.0" prefWidth="121.0" promptText="Pagamento" stylesheets="@DarkTheme.css" />
+      <JFXCheckBox fx:id="check_indirizzo" checkedColor="#b2b2b2" layoutX="304.0" layoutY="414.0" onMouseClicked="#addressHandler" selected="true" text="Usa l'indirizzo da te imopstato" textFill="#b2b2b2" />
+      <JFXTextField fx:id="indirizzoField" disable="true" layoutX="304.0" layoutY="448.0" promptText="Indirizzo" unFocusColor="#b2b2b2" />
+      <JFXTextField fx:id="cittàField" disable="true" layoutX="304.0" layoutY="494.0" promptText="Città" unFocusColor="#b2b2b2" />
+      <JFXTextField fx:id="capField" disable="true" layoutX="304.0" layoutY="542.0" promptText="Cap" unFocusColor="#b2b2b2" />
+      <FontAwesomeIconView glyphName="EUR" layoutX="153.0" layoutY="431.0" />
+      <FontAwesomeIconView glyphName="PAYPAL" layoutX="220.0" layoutY="431.0" />
+      <FontAwesomeIconView glyphName="MONEY" layoutX="184.0" layoutY="431.0" />
+      <Label layoutX="203.0" layoutY="419.0" text="/" textFill="#b2b2b2" />
+      <Label layoutX="168.0" layoutY="419.0" text="/" textFill="#b2b2b2" />
+      <FontAwesomeIconView glyphName="TRUCK" layoutX="675.0" layoutY="474.0" size="30" />
+      <FontAwesomeIconView glyphName="ENVELOPE" layoutX="628.0" layoutY="472.0" size="25" />
    </children>
 </AnchorPane>

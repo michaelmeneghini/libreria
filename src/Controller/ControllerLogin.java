@@ -73,7 +73,10 @@ public class ControllerLogin{
                 Scene registerFrame = new Scene(registerFrameParent);
                 Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
                 window.setScene(registerFrame);
-                window.setMaximized(true);
+                window.setResizable(false);
+                window.setMaximized(false);
+                window.setWidth(735);
+                window.setHeight(600);
                 window.show();
             }
 

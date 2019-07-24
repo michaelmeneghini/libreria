@@ -3,10 +3,16 @@ package Controller;
 import Model.DBConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,8 +52,10 @@ public class ControllerProfilo implements Initializable {
     private String email = ControllerLogin.getEmailLoggedas();
 
     @FXML
-    public void modificaDatiButtonClicked(ActionEvent event){
+    public void modificaDatiButtonClicked(ActionEvent event) throws IOException {
 
+        Parent root = FXMLLoader.load(getClass().getResource("../View/CambiaDati.fxml"));
+        anchor_pane.getChildren().setAll(root);
 
     }
 

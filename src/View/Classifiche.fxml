@@ -6,10 +6,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerClassifiche">
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerClassifiche">
    <children>
       <ComboBox fx:id="combo_box" layoutX="109.0" layoutY="51.0" prefHeight="32.0" prefWidth="199.0" promptText="Genere" />
-      <TableView fx:id="table" layoutX="360.0" layoutY="51.0" prefHeight="469.0" prefWidth="787.0">
+      <TableView fx:id="table" layoutX="360.0" layoutY="51.0" prefHeight="469.0" prefWidth="787.0" stylesheets="@DarkTheme.css">
         <columns>
           <TableColumn fx:id="titolo" prefWidth="109.0" text="Titolo" />
           <TableColumn fx:id="autore" prefWidth="95.0" text="Autore" />
@@ -20,6 +20,8 @@
             <TableColumn fx:id="ISBN" minWidth="0.0" prefWidth="123.0" text="ISBN" />
         </columns>
       </TableView>
-      <FontAwesomeIconView glyphName="CC_VISA" layoutX="185.0" layoutY="451.0" size="50" />
+      <FontAwesomeIconView glyphName="BOOK" layoutX="150.0" layoutY="475.0" size="90" />
+      <FontAwesomeIconView glyphName="SEARCH" layoutX="138.0" layoutY="421.0" size="20" />
+      <FontAwesomeIconView glyphName="PLUS" layoutX="152.0" layoutY="408.0" />
    </children>
 </AnchorPane>

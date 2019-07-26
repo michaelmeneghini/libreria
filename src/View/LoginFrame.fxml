@@ -27,9 +27,9 @@
                <font>
                   <Font size="10.0" />
                </font></Label>
-            <Label layoutX="237.0" layoutY="29.0" prefHeight="45.0" prefWidth="166.0" text="BENVENUTO" textFill="#b2b2b2">
+            <Label layoutX="253.0" layoutY="30.0" prefHeight="45.0" prefWidth="134.0" text="BENVENUTO" textFill="#b2b2b2">
                <font>
-                  <Font name="Ubuntu Bold" size="26.0" />
+                  <Font name="Ubuntu Light Italic" size="23.0" />
                </font>
             </Label>
       </children>

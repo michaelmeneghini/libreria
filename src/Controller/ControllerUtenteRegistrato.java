@@ -32,8 +32,6 @@ public class ControllerUtenteRegistrato {
         window.setMaximized(false);
         Button source = (Button) event.getSource();
 
-        //TODO:FINIRE LO SWITCH CASE PER RENDERE LA FINESTRA LUNGA E LARGA IL GIUSTO.
-
         switch (source.getText()){
             case "Carrello":
                 window.setWidth(964);
@@ -87,6 +85,8 @@ public class ControllerUtenteRegistrato {
         Parent registerFrameParent= FXMLLoader.load(getClass().getResource("../View/LoginFrame.fxml"));
         Scene registerFrame=new Scene(registerFrameParent);
         Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
+        window.setX(250);
+        window.setY(60);
         window.setHeight(400);
         window.setWidth(640);
         window.setScene(registerFrame);

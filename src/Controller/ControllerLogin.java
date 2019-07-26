@@ -94,8 +94,11 @@ public class ControllerLogin{
             Parent registerFrameParent = FXMLLoader.load(getClass().getResource("../View/UtenteNonRegistrato.fxml"));
             Scene registerFrame = new Scene(registerFrameParent);
             Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+            window.setX(250);
+            window.setY(60);
+            window.setWidth(820);
+            window.setHeight(600);
             window.setScene(registerFrame);
-            window.setMaximized(true);
             window.show();
 
         }

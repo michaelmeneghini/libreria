@@ -32,12 +32,13 @@
       <JFXTextField fx:id="indirizzoField" disable="true" layoutX="304.0" layoutY="448.0" promptText="Indirizzo" unFocusColor="#b2b2b2" />
       <JFXTextField fx:id="cittàField" disable="true" layoutX="304.0" layoutY="494.0" promptText="Città" unFocusColor="#b2b2b2" />
       <JFXTextField fx:id="capField" disable="true" layoutX="304.0" layoutY="542.0" promptText="Cap" unFocusColor="#b2b2b2" />
-      <FontAwesomeIconView glyphName="EUR" layoutX="153.0" layoutY="431.0" />
-      <FontAwesomeIconView glyphName="PAYPAL" layoutX="220.0" layoutY="431.0" />
-      <FontAwesomeIconView glyphName="MONEY" layoutX="184.0" layoutY="431.0" />
-      <Label layoutX="203.0" layoutY="419.0" text="/" textFill="#b2b2b2" />
-      <Label layoutX="168.0" layoutY="419.0" text="/" textFill="#b2b2b2" />
-      <FontAwesomeIconView glyphName="TRUCK" layoutX="675.0" layoutY="474.0" size="30" />
-      <FontAwesomeIconView glyphName="ENVELOPE" layoutX="628.0" layoutY="472.0" size="25" />
+      <FontAwesomeIconView glyphName="CC_VISA" layoutX="189.0" layoutY="438.0" size="30" />
+      <FontAwesomeIconView glyphName="CC_PAYPAL" layoutX="189.0" layoutY="571.0" size="30" text="" />
+      <FontAwesomeIconView glyphName="CC_MASTERCARD" layoutX="189.0" layoutY="481.0" size="30" />
+      <FontAwesomeIconView glyphName="TRUCK" layoutX="684.0" layoutY="476.0" size="35" />
+      <FontAwesomeIconView glyphName="EUR" layoutX="184.0" layoutY="390.0" />
+      <FontAwesomeIconView glyphName="ARROW_RIGHT" layoutX="662.0" layoutY="468.0" size="15" />
+      <FontAwesomeIconView glyphName="SHOPPING_CART" layoutX="616.0" layoutY="474.0" size="30" />
+      <FontAwesomeIconView glyphName="CC_AMEX" layoutX="189.0" layoutY="521.0" size="30" />
    </children>
 </AnchorPane>

@@ -38,9 +38,13 @@ public class ControllerUtenteRegistrato {
             case "Carrello":
                 window.setWidth(964);
                 window.setHeight(650);
+                window.setX(250);
+                window.setY(60);
                 hbox_principale.setPrefWidth(964);
                 break;
             case"Profilo":
+                window.setX(250);
+                window.setY(60);
                 window.setWidth(795);
                 window.setHeight(600);
                 hbox_principale.setPrefWidth(795);
@@ -51,11 +55,19 @@ public class ControllerUtenteRegistrato {
                 break;
 
             case"Classifiche":
-                System.out.println("CLASSIFICHE");
+
+                window.setX(20);
+                window.setY(60);
+                window.setWidth(1325);
+                window.setHeight(600);
+                hbox_principale.setPrefWidth(795);
 
                 break;
             case"Libri":
-                System.out.println("LIBRI");
+                window.setX(7);
+                window.setWidth(1350);
+                window.setHeight(600);
+                hbox_principale.setPrefWidth(1390);
 
                 break;
             default:

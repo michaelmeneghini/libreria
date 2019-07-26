@@ -2,6 +2,8 @@ package Controller;
 
 import Model.DBConnector;
 import Model.Libro;
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -11,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -20,6 +23,9 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class ControllerClassifiche implements Initializable {
+
+    @FXML
+    private AnchorPane anchor_pane;
 
     @FXML
     private ComboBox combo_box;

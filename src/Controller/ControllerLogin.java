@@ -75,7 +75,9 @@ public class ControllerLogin{
                 window.setScene(registerFrame);
                 window.setResizable(false);
                 window.setMaximized(false);
-                window.setWidth(735);
+                window.setX(250);
+                window.setY(60);
+                window.setWidth(820);
                 window.setHeight(600);
                 window.show();
             }

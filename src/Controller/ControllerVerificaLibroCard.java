@@ -19,7 +19,7 @@ public class ControllerVerificaLibroCard {
 
         Connection db = DBConnector.getConnection();
         Statement st = db.createStatement();
-        ResultSet rs = st.executeQuery("Select * from libro_card;");
+        ResultSet rs = st.executeQuery("Select * from libro_card ;");
         while(rs.next())
             listaLibroCard.add(new Libro_Card(rs.getInt(1),rs.getDate(2),rs.getInt(3)));
 

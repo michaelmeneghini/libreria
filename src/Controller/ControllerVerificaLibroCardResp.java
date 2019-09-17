@@ -67,7 +67,7 @@ public class ControllerVerificaLibroCardResp implements Initializable {
         Connection db = DBConnector.getConnection();
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM libro_card INNER JOIN utente ON libro_card.id = utente.libro_card");
+            ResultSet rs = st.executeQuery("SELECT * FROM libro_card INNER JOIN utente ON libro_card.id = utente.libro_card ORDER BY punti DESC");
             while (rs.next()) {
                 Libro_CardTable lc = new Libro_CardTable(rs.getInt(1), rs.getString(5), rs.getString(6), rs.getString(4), rs.getInt(3));
                 table.getItems().add(lc);

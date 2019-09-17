@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="764.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCarrelloNR">
+    <children>
+        <TableView fx:id="table_cart" prefHeight="343.0" prefWidth="746.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <columns>
+                <TableColumn fx:id="col_titolo" prefWidth="218.0" text="Titolo" />
+                <TableColumn fx:id="col_autore" minWidth="0.0" prefWidth="225.0" text="Autore" />
+                <TableColumn fx:id="col_prezzo" prefWidth="100.0" text="Prezzo" />
+                <TableColumn fx:id="col_punti" prefWidth="99.0" text="Punti" />
+                <TableColumn fx:id="col_delete" prefWidth="102.0" />
+            </columns>
+        </TableView>
+        <Label layoutX="10.0" layoutY="374.0" prefHeight="21.0" prefWidth="121.0" text="Saldo Totale" textFill="#b2b2b2" />
+        <Label fx:id="saldoLabel" layoutX="102.0" layoutY="374.0" prefHeight="21.0" prefWidth="82.0" textFill="#b2b2b2" />
+        <Button fx:id="checkout" layoutX="616.0" layoutY="493.0" mnemonicParsing="false" onAction="#placeOrder" text="CheckOut" />
+        <Button fx:id="aggiorna_carrello" layoutX="594.0" layoutY="368.0" mnemonicParsing="false" onAction="#updateLabels" text="Aggiorna carrello" />
+        <ComboBox fx:id="pagamento" layoutX="10.0" layoutY="414.0" prefHeight="26.0" prefWidth="121.0" promptText="Pagamento" stylesheets="@DarkTheme.css" />
+        <JFXTextField fx:id="indirizzoField" layoutX="304.0" layoutY="409.0" promptText="Indirizzo" unFocusColor="#b2b2b2" />
+        <JFXTextField fx:id="cittàField" layoutX="304.0" layoutY="452.0" promptText="Città" unFocusColor="#b2b2b2" />
+        <JFXTextField fx:id="capField" layoutX="304.0" layoutY="494.0" promptText="Cap" unFocusColor="#b2b2b2" />
+        <FontAwesomeIconView glyphName="CC_VISA" layoutX="189.0" layoutY="438.0" size="30" />
+        <FontAwesomeIconView glyphName="CC_PAYPAL" layoutX="189.0" layoutY="571.0" size="30" text="" />
+        <FontAwesomeIconView glyphName="CC_MASTERCARD" layoutX="189.0" layoutY="481.0" size="30" />
+        <FontAwesomeIconView glyphName="TRUCK" layoutX="684.0" layoutY="476.0" size="35" />
+        <FontAwesomeIconView glyphName="EUR" layoutX="184.0" layoutY="390.0" />
+        <FontAwesomeIconView glyphName="ARROW_RIGHT" layoutX="662.0" layoutY="468.0" size="15" />
+        <FontAwesomeIconView glyphName="SHOPPING_CART" layoutX="616.0" layoutY="474.0" size="30" />
+        <FontAwesomeIconView glyphName="CC_AMEX" layoutX="189.0" layoutY="521.0" size="30" />
+      <Label fx:id="codice_ordine" layoutX="300.0" layoutY="379.0" prefHeight="17.0" prefWidth="167.0" text="Codice del tuo ordine: " textFill="#b2b2b2" />
+    </children>
+</AnchorPane>

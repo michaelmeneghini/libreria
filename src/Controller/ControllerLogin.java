@@ -35,7 +35,9 @@ public class ControllerLogin{
         @FXML
         private Label login_error;
 
-        private static String loggedAs=null;
+        private static String loggedAs = null;
+        private static String nr_nome = null;
+        private static String nr_cognome = null;
 
         @FXML
         public void registerButtonClick(ActionEvent event) throws IOException {
@@ -89,6 +91,9 @@ public class ControllerLogin{
 
             String nameRecieved =accedi_nome.getText();
             String surnameRecieved=accedi_cognome.getText();
+
+            nr_nome = nameRecieved;
+            nr_cognome = surnameRecieved;
 
             //apertura della schermata principale utente non registrato
             Parent registerFrameParent = FXMLLoader.load(getClass().getResource("../View/UtenteNonRegistrato.fxml"));
@@ -158,5 +163,7 @@ public class ControllerLogin{
         public static String getEmailLoggedas(){
             return loggedAs;
         }
+        public static String getNomeNR() { return nr_nome;}
+        public static String getCognomeNR() { return nr_cognome;}
 
 }

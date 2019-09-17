@@ -11,10 +11,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class ControllerCambiaDati implements Initializable {
@@ -43,7 +40,7 @@ public class ControllerCambiaDati implements Initializable {
     private String email = ControllerLogin.getEmailLoggedas();
 
     @FXML
-    void fattoButtonClicked(ActionEvent event) throws IOException {
+    void fattoButtonClicked(ActionEvent event) throws IOException, SQLException {
 
         //TODO: Prendersi i vari dati dai TextField--> Controllare che almeno un campo sia diverso-->spedire al DB
         String indirizzo=mod_indirizzo.getText();
@@ -53,6 +50,24 @@ public class ControllerCambiaDati implements Initializable {
         String cognome=mod_cognome.getText();
         String città=mod_città.getText();
 
+        //Aggiorno i dati nel Database
+        Connection db = DBConnector.getConnection();
+        PreparedStatement ps = db.prepareStatement("UPDATE utente SET nome = ?, cognome = ?, indirizzo = ?, cap = ?, telefono = ?, città = ? WHERE email = ?");
+        ps.setString(1, nome);
+        ps.setString(2, cognome);
+        ps.setString(3, indirizzo);
+        ps.setString(4, cap);
+        ps.setString(5, cellulare);
+        ps.setString(6, città);
+        ps.setString(7, email);
+
+        Statement st = db.createStatement();
+        st.executeUpdate(ps.toString());
+
+
+        ps.close();
+        st.close();
+        db.close();
 
         //Ritorno alla schermata di profilo
         Parent root = FXMLLoader.load(getClass().getResource("../View/Profilo.fxml"));

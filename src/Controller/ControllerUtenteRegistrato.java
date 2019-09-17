@@ -50,7 +50,10 @@ public class ControllerUtenteRegistrato {
             case"Ordini":
                 System.out.println("ORDINI");
 
-                break;
+                Parent root = FXMLLoader.load(getClass().getResource("../View/VerificaOrdini.fxml"));
+                anchor_pane.getChildren().setAll(root);
+                return;
+
 
             case"Classifiche":
 

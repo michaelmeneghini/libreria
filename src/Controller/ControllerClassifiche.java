@@ -90,8 +90,8 @@ public class ControllerClassifiche implements Initializable {
         autore.setCellValueFactory(new PropertyValueFactory<>("autore"));
         prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
         descrizione.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
-        copie_vendute.setCellValueFactory(new PropertyValueFactory<>("punti"));
-        punti.setCellValueFactory(new PropertyValueFactory<>("copie_vendute"));
+        copie_vendute.setCellValueFactory(new PropertyValueFactory<>("copie_vendute"));
+        punti.setCellValueFactory(new PropertyValueFactory<>("punti"));
 
     }
 

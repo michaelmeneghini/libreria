@@ -4,8 +4,17 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerResponsabile">
+
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerVerificaOrdini">
    <children>
-      <Label layoutX="246.0" layoutY="140.0" text="ordini" />
+      <TableView fx:id="table" layoutX="32.0" layoutY="25.0" prefHeight="522.0" prefWidth="603.0">
+        <columns>
+          <TableColumn fx:id="codice" prefWidth="140.0" text="Codice" />
+          <TableColumn fx:id="data" prefWidth="126.0" text="Data" />
+            <TableColumn fx:id="stato" prefWidth="137.0" text="Stato" />
+            <TableColumn fx:id="punti" text="Punti" />
+            <TableColumn fx:id="prezzo" prefWidth="119.0" text="Costo" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

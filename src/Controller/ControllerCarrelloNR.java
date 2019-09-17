@@ -3,18 +3,13 @@ package Controller;
 import Model.DBConnector;
 import Model.Libro;
 import Model.LibroTable;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.*;
 import java.util.Random;
@@ -22,8 +17,7 @@ import java.util.ResourceBundle;
 
 import static Controller.ControllerLibri.cart;
 
-
-public class ControllerCarrello implements Initializable {
+public class ControllerCarrelloNR implements Initializable {
 
     @FXML
     private AnchorPane anchor_pane;
@@ -44,13 +38,10 @@ public class ControllerCarrello implements Initializable {
     private TableColumn<Libro, String> col_punti;
 
     @FXML
-    private  TableColumn<LibroTable,Button> col_delete;
+    private  TableColumn<LibroTable, Button> col_delete;
 
     @FXML
     private Label saldoLabel;
-
-    @FXML
-    private Label puntiLabel;
 
     @FXML
     private Button aggiorna_carrello;
@@ -59,7 +50,7 @@ public class ControllerCarrello implements Initializable {
     private ComboBox pagamento;
 
     @FXML
-    private JFXCheckBox check_indirizzo;
+    private Label codice_ordine;
 
     @FXML
     private JFXTextField indirizzoField;
@@ -82,17 +73,11 @@ public class ControllerCarrello implements Initializable {
         pagamento.getItems().add("Paypal");
         pagamento.getItems().add("Contrassegno");
 
-        pagamento.setOnAction(this::paymentHandler);
+
 
 
         initTable();
         loadData();
-    }
-
-    private void paymentHandler(Event event) {
-
-        // combo box
-
     }
 
     private void initTable() {initCols();}
@@ -111,6 +96,8 @@ public class ControllerCarrello implements Initializable {
     private void loadData(){
 
         table_cart.setItems(cart);
+
+        codice_ordine.setVisible(false);
 
         saldo = 0f;
         punti = 0;
@@ -135,28 +122,12 @@ public class ControllerCarrello implements Initializable {
         }
 
         saldoLabel.setText(String.format("%5.2f",saldo));
-        puntiLabel.setText(String.valueOf(punti));
 
     }
 
     @FXML
     private void updateLabels(){
         loadData();
-    }
-
-    @FXML
-    private void addressHandler(){
-
-        if(check_indirizzo.isSelected() ){
-            indirizzoField.setDisable(true);
-            cittàField.setDisable(true);
-            capField.setDisable(true);
-        } else {
-            indirizzoField.setDisable(false);
-            cittàField.setDisable(false);
-            capField.setDisable(false);
-        }
-
     }
 
     @FXML
@@ -170,34 +141,23 @@ public class ControllerCarrello implements Initializable {
         String stato_ordine = generateStatus( r.nextInt(3));
         PreparedStatement ps;
         String saldoDB = saldoLabel.getText().replace(',','.');
-        if(check_indirizzo.isSelected()){
-            //Indirizzo predefinito
-            ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, stato, data)  VALUES (?, ?, ?, ?, ?, ?);");
-            ps.setString(1,ControllerLogin.getEmailLoggedas());
-            ps.setFloat(2,Float.parseFloat(saldoDB));
-            System.out.println(pagamento.getValue().toString());
-            ps.setString(3, pagamento.getValue().toString());
-            ps.setInt(4,Integer.parseInt(puntiLabel.getText()));
-            ps.setString(5, stato_ordine);
-            ps.setDate(6, new Date(System.currentTimeMillis()));
-        }
-        else{
-            //Check Indirizzo Field
-            ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, indirizzo, cap, citta, stato, data)  VALUES(?,?, ?, ?, ?, ?, ?, ?, ?);");
-            ps.setString(1,ControllerLogin.getEmailLoggedas());
-            ps.setFloat(2,Float.parseFloat(saldoDB));
-            ps.setString(3,pagamento.getValue().toString());
-            ps.setInt(4,Integer.parseInt(puntiLabel.getText()));
-            ps.setString(5, indirizzoField.getText());
-            ps.setString(6, capField.getText());
-            ps.setString(7, cittàField.getText());
-            ps.setString(8, stato_ordine);
-            ps.setDate(9, new Date(System.currentTimeMillis()));
-        }
+        //Check Indirizzo Field
+        ps = db.prepareStatement("INSERT INTO public.ordine  (prezzo, pagamento, indirizzo, cap, citta, stato, nr_nome, nr_cognome, data)  VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        ps.setFloat(1,Float.parseFloat(saldoDB));
+        ps.setString(2,pagamento.getValue().toString());
+        ps.setString(3, indirizzoField.getText());
+        ps.setString(4, capField.getText());
+        ps.setString(5, cittàField.getText());
+        ps.setString(6, stato_ordine);
+        ps.setString(7, ControllerLogin.getNomeNR());
+        ps.setString(8, ControllerLogin.getCognomeNR());
+        ps.setDate(9, new Date(System.currentTimeMillis()));
+
+        int id = 0;
         Statement st = db.createStatement();
         int success = st.executeUpdate(ps.toString());
         if(success == 1){
-            int id;
+
             ResultSet rs = st.executeQuery("SELECT id FROM ordine ORDER BY id DESC LIMIT 1 ;");
             rs.next();
             id = rs.getInt(1);
@@ -217,27 +177,19 @@ public class ControllerCarrello implements Initializable {
             }
         }
 
-        //Aumento i punti della libro card dell'utente
-        ps = db.prepareStatement("UPDATE libro_card SET punti = punti + ? WHERE id = ?");
-        ps.setInt(1, Integer.parseInt(puntiLabel.getText()));
-
-        PreparedStatement lc = db.prepareStatement("SELECT libro_card FROM utente WHERE email ILIKE ?");
-        lc.setString(1, ControllerLogin.getEmailLoggedas());
-        ResultSet resultSet = st.executeQuery(lc.toString());
-        resultSet.next();
-        lc.close();
-
-        ps.setInt(2, resultSet.getInt(1));
-        st.executeUpdate(ps.toString());
-
         //pulisco il carrello
         cart.clear();
+
+        codice_ordine.setText(codice_ordine.getText() + id);
+        codice_ordine.setVisible(true);
 
         System.out.println("Ordine piazzato");
 
         st.close();
         db.close();
         ps.close();
+
+
     }
 
     private String generateStatus(int stato) {

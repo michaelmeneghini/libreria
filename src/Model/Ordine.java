@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.Date;
+
 public class Ordine {
     int id;
     String email;
@@ -11,8 +13,10 @@ public class Ordine {
     String città;
     String nr_nome;
     String nr_cognome;
+    String stato;
+    Date data;
 
-    public Ordine(int id, String email, float prezzo, String pagamento, int punti, String indirizzo, String cap, String città, String nr_nome, String nr_cognome) {
+    public Ordine(int id, String email, float prezzo, String pagamento, int punti, String indirizzo, String cap, String città, String nr_nome, String nr_cognome, String stato, Date data) {
         this.id = id;
         this.email = email;
         this.prezzo = prezzo;
@@ -23,9 +27,19 @@ public class Ordine {
         this.città = città;
         this.nr_nome = nr_nome;
         this.nr_cognome = nr_cognome;
+        this.stato = stato;
+        this.data = data;
     }
 
-    public int getId() {
+    public Ordine(int id, Date data, String stato, int punti, float costo){
+        this.id = id;
+        this.data = data;
+        this.stato = stato;
+        this.punti = punti;
+        this.prezzo = costo;
+    }
+
+    public int getCodice() {
         return id;
     }
 
@@ -33,7 +47,7 @@ public class Ordine {
         return email;
     }
 
-    public float getPrezzo() {
+    public float getCosto() {
         return prezzo;
     }
 
@@ -65,7 +79,7 @@ public class Ordine {
         return nr_cognome;
     }
 
-    public void setId(int id) {
+    public void setCodice(int id) {
         this.id = id;
     }
 
@@ -73,7 +87,7 @@ public class Ordine {
         this.email = email;
     }
 
-    public void setPrezzo(float prezzo) {
+    public void setCosto(float prezzo) {
         this.prezzo = prezzo;
     }
 
@@ -103,5 +117,24 @@ public class Ordine {
 
     public void setNr_cognome(String nr_cognome) {
         this.nr_cognome = nr_cognome;
+    }
+
+    public Date getData() {return data; }
+
+    public void setData(Date data) { this.data = data; }
+
+    public String getStato() { return stato; }
+
+    public void setStato(String stato) { this.stato = stato; }
+
+    @Override
+    public String toString() {
+        return "Ordine{" +
+                "id=" + id +
+                ", prezzo=" + prezzo +
+                ", punti=" + punti +
+                ", stato='" + stato + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

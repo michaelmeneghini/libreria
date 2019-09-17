@@ -29,6 +29,8 @@ public class ControllerUtenteNonRegistrato {
         window.setMaximized(false);
         Button source = (Button) event.getSource();
 
+        String pageToOpen = source.getText();
+
         switch (source.getText()){
             case "Carrello":
                 window.setWidth(964);
@@ -36,9 +38,13 @@ public class ControllerUtenteNonRegistrato {
                 window.setX(250);
                 window.setY(60);
                 hbox_principale.setPrefWidth(964);
+
+                pageToOpen += "NR";
+
                 break;
             case"Ordini":
                 System.out.println("ORDINI");
+                pageToOpen += "NR";
 
                 break;
 
@@ -64,7 +70,7 @@ public class ControllerUtenteNonRegistrato {
                 break;
         }
 
-        Parent root = FXMLLoader.load(getClass().getResource("../View/"+source.getText()+".fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../View/"+pageToOpen+".fxml"));
         anchor_pane.getChildren().setAll(root);
 
     }

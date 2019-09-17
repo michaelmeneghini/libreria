@@ -2,28 +2,87 @@ package Controller;
 
 import Model.DBConnector;
 import Model.Ordine;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-public class ControllerVerificaOrdini {
+public class ControllerVerificaOrdini implements Initializable {
 
-    private ArrayList<Ordine> listaOrdini;
+    @FXML
+    private AnchorPane anchor_pane;
 
-    public void onUpdate() throws SQLException, Exception {
-        listaOrdini = new ArrayList<>();
-        Connection db = DBConnector.getConnection();
-        Statement st = db.createStatement();
-        ResultSet rs = st.executeQuery("Select * from Ordine");
-        while (rs.next()){
-            listaOrdini.add(new Ordine(rs.getInt(1),rs.getString(2),rs.getFloat(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)));
-        }
+    @FXML
+    private TableView<Ordine> table;
 
-        db.close();
-        st.close();
+    @FXML
+    private TableColumn<Ordine, Integer> codice;
+
+    @FXML
+    private TableColumn<Ordine, Date> data;
+
+    @FXML
+    private TableColumn<Ordine, String> stato;
+
+    @FXML
+    private TableColumn<Ordine, Integer> punti;
+
+    @FXML
+    private TableColumn<Ordine, Float> prezzo;
+
+    public static ObservableList<Ordine> ordini;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        initTable();
+        loadData();
 
     }
+
+    private void initTable() {
+
+        codice.setCellValueFactory(new PropertyValueFactory<>("Codice"));
+        data.setCellValueFactory(new PropertyValueFactory<>("Data"));
+        stato.setCellValueFactory(new PropertyValueFactory<>("Stato"));
+        punti.setCellValueFactory(new PropertyValueFactory<>("Punti"));
+        prezzo.setCellValueFactory(new PropertyValueFactory<>("Costo"));
+
+    }
+
+    private void loadData() {
+
+        ordini = FXCollections.observableArrayList();
+
+        Connection db = DBConnector.getConnection();
+        try {
+            PreparedStatement ps = db.prepareStatement("Select id, data, stato, punti, prezzo FROM ordine WHERE email = ? ORDER BY data DESC;");
+            ps.setString(1, ControllerLogin.getEmailLoggedas());
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery(ps.toString());
+
+            while (rs.next()) {
+                ordini.add(new Ordine(rs.getInt("id"),rs.getDate("data"),rs.getString("stato"),rs.getInt("punti"),rs.getFloat("prezzo")));
+            }
+
+            rs.close();
+            ps.close();
+            st.close();
+            db.close();
+        }
+        catch(Exception e){e.printStackTrace();}
+        table.setItems(ordini);
+
+
+    }
+
+
 }

@@ -20,6 +20,9 @@ import static Controller.ControllerLibri.cart;
 public class ControllerCarrelloNR implements Initializable {
 
     @FXML
+    private Label checkOutError;
+
+    @FXML
     private AnchorPane anchor_pane;
 
     @FXML
@@ -133,6 +136,27 @@ public class ControllerCarrelloNR implements Initializable {
     @FXML
     private void placeOrder() throws SQLException {
 
+        String paymentValue;
+
+        try{
+
+            if(cittàField.getText().isEmpty() || capField.getText().isEmpty() || indirizzoField.getText().isEmpty()) {
+                checkOutError.setText("Completare campi!");
+                return;
+            }
+            paymentValue=pagamento.getValue().toString();
+            if(saldo==0f){
+                checkOutError.setText("Ordine vuoto!");
+                return;
+            }
+        }
+        catch (NullPointerException e){
+            checkOutError.setText("Inserire pagamento!");
+            return;
+        }
+
+        checkOutError.setText("");
+
         //Aggiorno il carrello nel caso non venisse fatto prima di effettuare l'ordine
         loadData();
 
@@ -144,7 +168,7 @@ public class ControllerCarrelloNR implements Initializable {
         //Check Indirizzo Field
         ps = db.prepareStatement("INSERT INTO public.ordine  (prezzo, pagamento, indirizzo, cap, citta, stato, nr_nome, nr_cognome, data)  VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);");
         ps.setFloat(1,Float.parseFloat(saldoDB));
-        ps.setString(2,pagamento.getValue().toString());
+        ps.setString(2,paymentValue);
         ps.setString(3, indirizzoField.getText());
         ps.setString(4, capField.getText());
         ps.setString(5, cittàField.getText());

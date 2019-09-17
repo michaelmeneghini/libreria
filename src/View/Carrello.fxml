@@ -28,7 +28,7 @@
       <Button fx:id="checkout" layoutX="616.0" layoutY="493.0" mnemonicParsing="false" onAction="#placeOrder" text="CheckOut" />
       <Button fx:id="aggiorna_carrello" layoutX="594.0" layoutY="368.0" mnemonicParsing="false" onAction="#updateLabels" text="Aggiorna carrello" />
       <ComboBox fx:id="pagamento" layoutX="10.0" layoutY="414.0" prefHeight="26.0" prefWidth="121.0" promptText="Pagamento" stylesheets="@DarkTheme.css" />
-      <JFXCheckBox fx:id="check_indirizzo" checkedColor="#b2b2b2" layoutX="304.0" layoutY="414.0" onMouseClicked="#addressHandler" selected="true" text="Usa l'indirizzo da te imopstato" textFill="#b2b2b2" />
+      <JFXCheckBox fx:id="check_indirizzo" checkedColor="#b2b2b2" layoutX="304.0" layoutY="414.0" onMouseClicked="#addressHandler" selected="true" text="Usa l'indirizzo da te impostato" textFill="#b2b2b2" />
       <JFXTextField fx:id="indirizzoField" disable="true" layoutX="304.0" layoutY="448.0" promptText="Indirizzo" unFocusColor="#b2b2b2" />
       <JFXTextField fx:id="cittàField" disable="true" layoutX="304.0" layoutY="494.0" promptText="Città" unFocusColor="#b2b2b2" />
       <JFXTextField fx:id="capField" disable="true" layoutX="304.0" layoutY="542.0" promptText="Cap" unFocusColor="#b2b2b2" />
@@ -40,5 +40,6 @@
       <FontAwesomeIconView glyphName="ARROW_RIGHT" layoutX="662.0" layoutY="468.0" size="15" />
       <FontAwesomeIconView glyphName="SHOPPING_CART" layoutX="616.0" layoutY="474.0" size="30" />
       <FontAwesomeIconView glyphName="CC_AMEX" layoutX="189.0" layoutY="521.0" size="30" />
+      <Label fx:id="checkOutError" layoutX="611.0" layoutY="550.0" prefHeight="16.0" prefWidth="144.0" textFill="#d00808" />
    </children>
 </AnchorPane>

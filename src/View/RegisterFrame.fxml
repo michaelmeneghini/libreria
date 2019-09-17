@@ -10,7 +10,7 @@
 
 <VBox prefHeight="500.0" prefWidth="570.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerRegister">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="500.0" prefWidth="522.0" VBox.vgrow="ALWAYS">
       <children>
             <Button layoutX="234.0" layoutY="416.0" mnemonicParsing="false" onAction="#registerUser" text="Registrati" />
             <JFXTextField fx:id="register_name" layoutX="82.0" layoutY="125.0" promptText="Nome" />
@@ -23,8 +23,7 @@
             <JFXPasswordField fx:id="register_password" layoutX="190.0" layoutY="320.0" promptText="Password" />
             <JFXPasswordField fx:id="register_confirm_password" layoutX="190.0" layoutY="359.0" promptText="Confirm password" />
             <FontAwesomeIconView glyphName="USER" layoutX="254.0" layoutY="98.0" size="70" wrappingWidth="62.428571701049805" />
-            <JFXButton fx:id="login_backButton" layoutX="435.0" layoutY="449.0" onAction="#backButtonClicked" prefHeight="34.0" prefWidth="90.0" text="Indietro" />
-            <FontAwesomeIconView glyphName="UNDO" layoutX="533.0" layoutY="476.0" size="30" />
+            <JFXButton fx:id="login_backButton" layoutX="466.0" layoutY="450.0" onAction="#backButtonClicked" prefHeight="34.0" prefWidth="90.0" text="Indietro" />
       </children>
     </AnchorPane>
   </children>

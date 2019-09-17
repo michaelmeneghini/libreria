@@ -11,14 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 import java.sql.*;
 import java.util.regex.Pattern;
 
 
-public class ControllerLogin{
+public class ControllerLogin {
 
         @FXML
         private TextField login_email;
@@ -35,6 +33,9 @@ public class ControllerLogin{
         @FXML
         private Label login_error;
 
+        @FXML
+        private Label login_error1;
+
         private static String loggedAs = null;
         private static String nr_nome = null;
         private static String nr_cognome = null;
@@ -46,6 +47,12 @@ public class ControllerLogin{
             Scene registerFrame=new Scene(registerFrameParent);
             Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
             window.setScene(registerFrame);
+            window.setResizable(false);
+            window.setMaximized(false);
+            window.setX(450);
+            window.setY(60);
+            window.setWidth(580);
+            window.setHeight(550);
             window.show();
 
         }
@@ -58,8 +65,11 @@ public class ControllerLogin{
             String emailReceived=login_email.getText();
             String passwordReceived= login_password.getText();
 
-            if(!isValidPassword(emailReceived,passwordReceived)){
-                login_error.setText("Email/Password insertite non valide!");
+            if( !isValidPassword(emailReceived,passwordReceived)){
+                if(emailReceived.length()==0 || passwordReceived.length()==0)
+                    login_error.setText("Email/Password non inserite!");
+                else
+                    login_error.setText("Email/Password inserite non valide!");
             }
             else {
 
@@ -87,10 +97,15 @@ public class ControllerLogin{
         }
 
         @FXML
-        public void accediButtonClick(ActionEvent event) throws IOException {
+        public void accediButtonClick(ActionEvent event) throws IOException{
 
             String nameRecieved =accedi_nome.getText();
             String surnameRecieved=accedi_cognome.getText();
+
+            if(nameRecieved.length()==0 || surnameRecieved.length()==0){
+                login_error1.setText("Inserire Nome e Cognome!");
+                return;
+            }
 
             nr_nome = nameRecieved;
             nr_cognome = surnameRecieved;
@@ -127,12 +142,15 @@ public class ControllerLogin{
             if(email.length() == 0 || password.length() == 0){
                 return false;
             }
+
             Connection db = DBConnector.getConnection();
              Statement st = db.createStatement();
              PreparedStatement ps = db.prepareStatement("SELECT * FROM utente WHERE email ILIKE ? AND password LIKE ?");
              ps.setString(1,email);
              ps.setString(2,password);
+
              ResultSet rs = st.executeQuery(ps.toString());
+
              if(rs.next()) {
                  db.close();
                  st.close();

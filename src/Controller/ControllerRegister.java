@@ -126,6 +126,10 @@ public class ControllerRegister  {
                 Scene registerFrame=new Scene(registerFrameParent);
                 Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
                 window.setScene(registerFrame);
+                window.setX(450);
+                window.setY(45);
+                window.setWidth(640);
+                window.setHeight(400);
                 window.show();
             }
 
@@ -168,6 +172,10 @@ public class ControllerRegister  {
         Scene registerFrame=new Scene(registerFrameParent);
         Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
         window.setScene(registerFrame);
+        window.setX(450);
+        window.setY(45);
+        window.setWidth(640);
+        window.setHeight(400);
         window.show();
     }
 

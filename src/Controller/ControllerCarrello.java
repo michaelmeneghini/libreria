@@ -23,8 +23,11 @@ import java.util.ResourceBundle;
 import static Controller.ControllerLibri.cart;
 
 
-public class ControllerCarrello implements Initializable {
+public class
+ControllerCarrello implements Initializable {
 
+    @FXML
+    private Label checkOutError;
     @FXML
     private AnchorPane anchor_pane;
 
@@ -70,6 +73,8 @@ public class ControllerCarrello implements Initializable {
     @FXML
     private JFXTextField capField;
 
+    private boolean paymentMethodSelected=false;
+
     private Float saldo = new Float(0);
     private int punti = 0;
 
@@ -77,7 +82,6 @@ public class ControllerCarrello implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        //combobox
         pagamento.getItems().add("Carta di credito");
         pagamento.getItems().add("Paypal");
         pagamento.getItems().add("Contrassegno");
@@ -90,9 +94,7 @@ public class ControllerCarrello implements Initializable {
     }
 
     private void paymentHandler(Event event) {
-
-        // combo box
-
+        paymentMethodSelected=true;
     }
 
     private void initTable() {initCols();}
@@ -162,6 +164,21 @@ public class ControllerCarrello implements Initializable {
     @FXML
     private void placeOrder() throws SQLException {
 
+        String paymentValue;
+
+        try{
+             paymentValue=pagamento.getValue().toString();
+             if(saldo==0f){
+                 checkOutError.setText("Ordine vuoto!");
+                 return;
+             }
+        }
+        catch (NullPointerException e){
+            checkOutError.setText("Inserire pagamento!");
+            return;
+        }
+
+        checkOutError.setText("");
         //Aggiorno il carrello nel caso non venisse fatto prima di effettuare l'ordine
         loadData();
 
@@ -175,8 +192,7 @@ public class ControllerCarrello implements Initializable {
             ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, stato, data)  VALUES (?, ?, ?, ?, ?, ?);");
             ps.setString(1,ControllerLogin.getEmailLoggedas());
             ps.setFloat(2,Float.parseFloat(saldoDB));
-            System.out.println(pagamento.getValue().toString());
-            ps.setString(3, pagamento.getValue().toString());
+            ps.setString(3, paymentValue);
             ps.setInt(4,Integer.parseInt(puntiLabel.getText()));
             ps.setString(5, stato_ordine);
             ps.setDate(6, new Date(System.currentTimeMillis()));
@@ -186,7 +202,7 @@ public class ControllerCarrello implements Initializable {
             ps = db.prepareStatement("INSERT INTO public.ordine  (email, prezzo, pagamento, punti, indirizzo, cap, citta, stato, data)  VALUES(?,?, ?, ?, ?, ?, ?, ?, ?);");
             ps.setString(1,ControllerLogin.getEmailLoggedas());
             ps.setFloat(2,Float.parseFloat(saldoDB));
-            ps.setString(3,pagamento.getValue().toString());
+            ps.setString(3,paymentValue);
             ps.setInt(4,Integer.parseInt(puntiLabel.getText()));
             ps.setString(5, indirizzoField.getText());
             ps.setString(6, capField.getText());

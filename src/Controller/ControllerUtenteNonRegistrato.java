@@ -43,11 +43,12 @@ public class ControllerUtenteNonRegistrato {
 
                 break;
             case"Ordini":
-
-                Parent root = FXMLLoader.load(getClass().getResource("../View/VerificaOrdiniNR.fxml"));
-                anchor_pane.getChildren().setAll(root);
-
-                return;
+                window.setWidth(830);
+                window.setHeight(600);
+                window.setX(250);
+                window.setY(60);
+                pageToOpen="Verifica"+pageToOpen;
+                break;
 
             case"Classifiche":
 

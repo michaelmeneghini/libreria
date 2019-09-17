@@ -31,6 +31,7 @@ public class ControllerUtenteRegistrato {
         window.setResizable(false);
         window.setMaximized(false);
         Button source = (Button) event.getSource();
+        String pageToOpen = source.getText();
 
         switch (source.getText()){
             case "Carrello":
@@ -48,13 +49,12 @@ public class ControllerUtenteRegistrato {
                 hbox_principale.setPrefWidth(795);
                 break;
             case"Ordini":
-                System.out.println("ORDINI");
-
-                Parent root = FXMLLoader.load(getClass().getResource("../View/VerificaOrdini.fxml"));
-                anchor_pane.getChildren().setAll(root);
-                return;
-
-
+                window.setWidth(830);
+                window.setHeight(600);
+                window.setX(250);
+                window.setY(60);
+                pageToOpen="Verifica"+pageToOpen;
+                break;
             case"Classifiche":
 
                 window.setX(20);
@@ -77,7 +77,7 @@ public class ControllerUtenteRegistrato {
                 break;
         }
 
-        Parent root = FXMLLoader.load(getClass().getResource("../View/"+source.getText()+".fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../View/"+pageToOpen+".fxml"));
         anchor_pane.getChildren().setAll(root);
 
     }

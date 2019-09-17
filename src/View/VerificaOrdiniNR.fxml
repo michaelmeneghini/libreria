@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerVerificaOrdiniNR">
+   <children>
+      <JFXTextField fx:id="id_ordine" layoutX="37.0" layoutY="48.0" promptText="ID ordine" />
+      <Button fx:id="cerca" layoutX="251.0" layoutY="48.0" mnemonicParsing="false" onAction="#searchOrder" text="Cerca " />
+      <Label fx:id="errore" layoutX="35.0" layoutY="114.0" prefHeight="61.0" prefWidth="500.0" text="Il codice inserito non è corretto o identifica un ordine appartenente a un utente registrato." textFill="#f50000" visible="false" />
+      <Label fx:id="data" layoutX="37.0" layoutY="197.0" prefHeight="17.0" prefWidth="49.0" text="Data: " textFill="#b2b2b2" visible="false" />
+      <Label fx:id="nome" layoutX="35.0" layoutY="226.0" prefHeight="17.0" prefWidth="49.0" text="Nome: " textFill="#b2b2b2" visible="false" />
+      <Label fx:id="cognome" layoutX="35.0" layoutY="255.0" prefHeight="17.0" prefWidth="67.0" text="Cognome: " textFill="#b2b2b2" visible="false" />
+      <Label fx:id="costo" layoutX="35.0" layoutY="292.0" prefHeight="17.0" prefWidth="42.0" text="Costo: " textFill="#b2b2b2" visible="false" />
+      <Label fx:id="stato" layoutX="35.0" layoutY="324.0" text="Stato: " textFill="#b2b2b2" visible="false" />
+      <Label fx:id="data_content" layoutX="115.0" layoutY="197.0" prefHeight="17.0" prefWidth="85.0" textFill="#b2b2b2" />
+      <Label fx:id="nome_content" layoutX="115.0" layoutY="226.0" prefHeight="17.0" prefWidth="85.0" textFill="#b2b2b2" />
+      <Label fx:id="cognome_content" layoutX="115.0" layoutY="255.0" prefHeight="17.0" prefWidth="85.0" textFill="#b2b2b2" />
+      <Label fx:id="costo_content" layoutX="115.0" layoutY="292.0" prefHeight="17.0" prefWidth="85.0" textFill="#b2b2b2" />
+      <Label fx:id="stato_content" layoutX="115.0" layoutY="324.0" prefHeight="17.0" prefWidth="85.0" textFill="#b2b2b2" />
+   </children>
+</AnchorPane>

@@ -208,7 +208,7 @@ public class ControllerCarrelloNR implements Initializable {
         codice_ordine.setVisible(true);
 
         System.out.println("Ordine piazzato");
-
+        saldo=0f;
         st.close();
         db.close();
         ps.close();

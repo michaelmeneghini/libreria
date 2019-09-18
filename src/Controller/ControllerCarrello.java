@@ -166,6 +166,11 @@ ControllerCarrello implements Initializable {
 
         String paymentValue;
 
+        if(!check_indirizzo.isSelected() && (indirizzoField.getText().isEmpty() ||  cittàField.getText().isEmpty() || capField.getText().isEmpty())){
+            checkOutError.setText("Completare campi!");
+            return;
+        }
+
         try{
              paymentValue=pagamento.getValue().toString();
              if(saldo==0f){
@@ -250,6 +255,7 @@ ControllerCarrello implements Initializable {
         cart.clear();
 
         System.out.println("Ordine piazzato");
+        saldo=0f;
 
         st.close();
         db.close();

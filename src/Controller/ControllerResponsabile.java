@@ -1,6 +1,8 @@
 package Controller;
 
 import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,21 +34,37 @@ public class ControllerResponsabile {
 
         Parent root = null;
 
+        Stage window=(Stage)(((Node)event.getSource()).getScene().getWindow());
+        window.setResizable(false);
+        window.setMaximized(false);
+
         JFXButton source = (JFXButton) event.getSource();
+        String pageToOpen=null;
         switch (source.getText()){
             case "Aggiungi Libro":
-                root = FXMLLoader.load(getClass().getResource("../View/AggiungiLibro.fxml"));
+                window.setX(7);
+                window.setWidth(1350);
+                window.setHeight(640);
+                pageToOpen="AggiungiLibro";
                 break;
             case "Verifica stato ordini":
-                root = FXMLLoader.load(getClass().getResource("../View/VerificaOrdiniResp.fxml"));
+                window.setWidth(1300);
+                window.setHeight(640);
+                window.setX(250);
+                window.setY(60);
+                pageToOpen="VerificaOrdiniResp";
                 break;
             case "Verifica libro card":
-                root = FXMLLoader.load(getClass().getResource("../View/VerificaLibroCard.fxml"));
+                window.setWidth(830);
+                window.setHeight(640);
+                window.setX(250);
+                window.setY(60);
+                pageToOpen="VerificaLibroCard";
                 break;
 
+
         }
-
-
+        root = FXMLLoader.load(getClass().getResource("../View/"+pageToOpen+".fxml"));
         anchor_pane.getChildren().setAll(root);
     }
 

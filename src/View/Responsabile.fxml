@@ -2,10 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1250.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerResponsabile">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="694.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerResponsabile">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="323.0" stylesheets="@DarkTheme.css">
          <children>
@@ -16,6 +17,10 @@
             <FontAwesomeIconView glyphName="BOOK" layoutX="103.0" layoutY="79.0" size="40" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchor_pane" prefHeight="600.0" prefWidth="700.0" stylesheets="@DarkTheme.css" />
+      <AnchorPane fx:id="anchor_pane" prefHeight="600.0" prefWidth="700.0" stylesheets="@DarkTheme.css">
+         <children>
+            <FontAwesomeIconView glyphName="SUITCASE" layoutX="214.0" layoutY="317.0" size="50" />
+            <Label layoutX="190.0" layoutY="343.0" text="RESPONSABILE" textFill="#b2b2b2" />
+         </children></AnchorPane>
    </children>
 </HBox>

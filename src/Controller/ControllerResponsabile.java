@@ -38,7 +38,7 @@ public class ControllerResponsabile {
                 root = FXMLLoader.load(getClass().getResource("../View/AggiungiLibro.fxml"));
                 break;
             case "Verifica stato ordini":
-                root = FXMLLoader.load(getClass().getResource("../View/VerificaOrdini.fxml"));
+                root = FXMLLoader.load(getClass().getResource("../View/VerificaOrdiniResp.fxml"));
                 break;
             case "Verifica libro card":
                 root = FXMLLoader.load(getClass().getResource("../View/VerificaLibroCard.fxml"));

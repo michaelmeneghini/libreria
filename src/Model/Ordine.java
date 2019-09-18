@@ -39,6 +39,26 @@ public class Ordine {
         this.prezzo = costo;
     }
 
+    public Ordine(int id, float prezzo, String pagamento, String nr_nome, String nr_cognome, String stato, Date data) {
+        this.id = id;
+        this.prezzo = prezzo;
+        this.pagamento = pagamento;
+        this.nr_nome = nr_nome;
+        this.nr_cognome = nr_cognome;
+        this.stato = stato;
+        this.data = data;
+    }
+
+    public Ordine(int id, String email, float prezzo, String pagamento, int punti, String stato, Date data) {
+        this.id = id;
+        this.email = email;
+        this.prezzo = prezzo;
+        this.pagamento = pagamento;
+        this.punti = punti;
+        this.stato = stato;
+        this.data = data;
+    }
+
     public int getCodice() {
         return id;
     }
@@ -127,12 +147,20 @@ public class Ordine {
 
     public void setStato(String stato) { this.stato = stato; }
 
+
     @Override
     public String toString() {
         return "Ordine{" +
                 "id=" + id +
+                ", email='" + email + '\'' +
                 ", prezzo=" + prezzo +
+                ", pagamento='" + pagamento + '\'' +
                 ", punti=" + punti +
+                ", indirizzo='" + indirizzo + '\'' +
+                ", cap='" + cap + '\'' +
+                ", città='" + città + '\'' +
+                ", nr_nome='" + nr_nome + '\'' +
+                ", nr_cognome='" + nr_cognome + '\'' +
                 ", stato='" + stato + '\'' +
                 ", data=" + data +
                 '}';

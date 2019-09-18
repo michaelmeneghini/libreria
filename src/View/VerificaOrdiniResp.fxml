@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerVerificaOrdiniResp">
+   <children>
+      <TableView fx:id="table" layoutX="24.0" layoutY="23.0" prefHeight="548.0" prefWidth="909.0">
+        <columns>
+          <TableColumn fx:id="codice" prefWidth="81.0" text="Codice" />
+            <TableColumn fx:id="data" prefWidth="87.0" text="Data" />
+            <TableColumn fx:id="costo" prefWidth="88.0" text="Costo" />
+            <TableColumn fx:id="stato" prefWidth="95.0" text="Stato" />
+            <TableColumn fx:id="punti" prefWidth="81.0" text="Punti" />
+            <TableColumn fx:id="pagamento" prefWidth="89.0" text="Pagamento" />
+          <TableColumn fx:id="email" prefWidth="202.0" text="Email" />
+            <TableColumn fx:id="nome" text="Nome" />
+            <TableColumn fx:id="cognome" prefWidth="105.0" text="Cognome" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -47,7 +47,7 @@ public class ControllerUtenteNonRegistrato {
                 window.setHeight(600);
                 window.setX(250);
                 window.setY(60);
-                pageToOpen="Verifica"+pageToOpen;
+                pageToOpen="Verifica"+pageToOpen+"NR";
                 break;
 
             case"Classifiche":

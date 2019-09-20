@@ -87,7 +87,7 @@ public class ControllerProfilo implements Initializable {
             db.close();
             st.close();
         }
-        catch(Exception e){};
+        catch(Exception e){}
     }
 
 

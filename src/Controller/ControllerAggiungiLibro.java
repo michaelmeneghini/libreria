@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -71,7 +72,7 @@ public class ControllerAggiungiLibro implements Initializable {
     private ObservableList<Libro> libri = FXCollections.observableArrayList();
 
     @FXML
-    public void addButtonClick() throws SQLException, Exception {
+    public void addButtonClick() throws Exception {
         String isbn = isbnField.getText();
         String titolo = titoloField.getText();
         String autore = autoreField.getText();
@@ -81,17 +82,31 @@ public class ControllerAggiungiLibro implements Initializable {
         String punti = puntiField.getText();
         String genere = genereField.getText();
 
-        if(isbn.length() > 0 && titolo.length() > 0 && autore.length() > 0 && prezzo.length()> 0 && descrizione.length() > 0 && copieVendute.length() > 0 && punti.length() > 0) {
+        Float prezzoNumber;
+        Integer copieVenduteNumber;
+        Integer puntiNumber;
+        try{
+            prezzoNumber=Float.parseFloat(prezzo);
+            copieVenduteNumber=Integer.parseInt(copieVendute);
+            puntiNumber=Integer.parseInt(punti);
+        }
+        catch(NumberFormatException e){
+            prezzoNumber=0f;
+            copieVenduteNumber=0;
+            puntiNumber=0;
+        }
+
+        if(isbn.length() > 0 && titolo.length() > 0 && autore.length() > 0 && prezzoNumber > 0f  && descrizione.length() > 0 && copieVenduteNumber>=0 && puntiNumber>= 0) {
             Connection db = DBConnector.getConnection();
             Statement st = db.createStatement();
             PreparedStatement ps = db.prepareStatement("INSERT INTO public.libro (\"ISBN\", titolo, autore, prezzo, descrizione, copie_vendute, punti, genere) VALUES(?, ?, ?, ?, ?, ?, ?, ?);");
             ps.setString(1, isbn);
             ps.setString(2, titolo);
             ps.setString(3, autore);
-            ps.setFloat(4, Float.parseFloat(prezzo));
+            ps.setFloat(4, prezzoNumber);
             ps.setString(5, descrizione);
-            ps.setInt(6, Integer.parseInt(copieVendute));
-            ps.setInt(7, Integer.parseInt(punti));
+            ps.setInt(6, copieVenduteNumber);
+            ps.setInt(7, puntiNumber);
             ps.setString(8, genere);
 
             int result = st.executeUpdate(ps.toString());
@@ -105,7 +120,9 @@ public class ControllerAggiungiLibro implements Initializable {
             st.close();
         }
         else{
-            System.out.println("Inserire tutto correttamente");
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setHeaderText("Ci sono dati mancanti e/o errati!");
+            errorAlert.showAndWait();
         }
 
         loadData();

@@ -46,7 +46,7 @@ public class ControllerRegister  {
     private PasswordField register_confirm_password;
 
     @FXML
-    public void registerUser(ActionEvent event) throws SQLException, Exception{
+    public void registerUser(ActionEvent event) throws Exception{
 
         String name = register_name.getText();
         String surname = register_surname.getText();

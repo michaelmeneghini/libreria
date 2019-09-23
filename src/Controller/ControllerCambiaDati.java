@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -41,14 +42,19 @@ public class ControllerCambiaDati implements Initializable {
 
     @FXML
     void fattoButtonClicked(ActionEvent event) throws IOException, SQLException {
-
-        //TODO: Prendersi i vari dati dai TextField--> Controllare che almeno un campo sia diverso-->spedire al DB
         String indirizzo=mod_indirizzo.getText();
         String cellulare=mod_cellulare.getText();
         String cap=mod_cap.getText();
         String nome=mod_nome.getText();
         String cognome=mod_cognome.getText();
         String città=mod_città.getText();
+
+        if(indirizzo.isEmpty() || cellulare.isEmpty() || cap.isEmpty() || nome.isEmpty() || cognome.isEmpty() || città.isEmpty()) {
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setHeaderText("Riempire tutti i campi!");
+            errorAlert.showAndWait();
+            return;
+        }
 
         //Aggiorno i dati nel Database
         Connection db = DBConnector.getConnection();

@@ -253,6 +253,8 @@ ControllerCarrello implements Initializable {
 
         //pulisco il carrello
         cart.clear();
+        saldoLabel.setText("0,00");
+        puntiLabel.setText("0");
 
         System.out.println("Ordine piazzato");
         saldo=0f;

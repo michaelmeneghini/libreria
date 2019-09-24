@@ -209,6 +209,7 @@ public class ControllerCarrelloNR implements Initializable {
 
         System.out.println("Ordine piazzato");
         saldo=0f;
+        saldoLabel.setText("0,00");
         st.close();
         db.close();
         ps.close();

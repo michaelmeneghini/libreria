@@ -63,6 +63,14 @@ public class ControllerVerificaOrdiniNR{
 
         initialize();
 
+        try{
+            Integer.parseInt(id_ordine.getText());
+        }
+        catch(NumberFormatException e){
+            errore.setVisible(true);
+            return;
+        }
+
         if( !id_ordine.getText().equals("")) {
 
             //cerco l'ordine nel database
